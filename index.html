@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OneRoof — One Pager</title>
-<meta name="description" content="OneRoof brings every controlled document — engineering, HR, finance and accounting — under one auditable, version-controlled roof.">
+<title>OneRoofTraceability — One Pager</title>
+<meta name="description" content="OneRoofTraceability brings every controlled document — engineering, HR, finance and accounting — under one auditable, version-controlled roof.">
 <style>
   :root{
     --navy:#0B2545;
@@ -79,10 +79,10 @@
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
   .logo{ display:flex; align-items:center; gap:.55em; text-decoration:none; color:#fff; }
   .logo-mark{
-    width:30px; height:30px; border-radius:8px;
+    width:34px; height:34px; border-radius:8px;
     background:linear-gradient(135deg, var(--orange), var(--orange-light));
     display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-head); font-weight:700; color:#fff; font-size:1rem;
+    font-family:var(--font-head); font-weight:700; color:#fff; font-size:.78rem; letter-spacing:.2px;
   }
   .logo-word{ font-family:var(--font-head); font-weight:700; font-size:1.18rem; letter-spacing:.2px; }
   #nav-links{ list-style:none; display:flex; gap:28px; margin:0; padding:0; }
@@ -119,7 +119,18 @@
   .hero-grid > .hero-visual{ flex:.85 1 0; }
   .hero h1{ color:#fff; font-size:2.7rem; max-width:11.5em; }
   .hero .lede{ color:#CFE0F5; font-size:1.08rem; max-width:34em; }
-  .hero-actions{ display:flex; gap:14px; margin-top:1.6rem; flex-wrap:wrap; }
+  .hero-actions{ display:flex; gap:14px; margin-top:1.6rem; flex-wrap:wrap; align-items:center; }
+  .hero-actions > *{ margin-right:14px; }
+  .hero-actions > *:last-child{ margin-right:0; }
+  .hero-industry{ display:flex; align-items:center; gap:.6em; margin-left:6px; }
+  .hero-industry label{ color:#CFE0F5; font-size:.88rem; font-weight:600; margin-right:.6em; }
+  #heroIndustrySelect{
+    font-family:var(--font-body); font-size:.92rem; color:#fff; font-weight:600;
+    padding:.68em 2.3em .68em 1em; border-radius:8px; border:1.5px solid rgba(255,255,255,.45);
+    background:rgba(255,255,255,.08) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 14px center;
+    background-size:13px; appearance:none; -webkit-appearance:none; cursor:pointer;
+  }
+  #heroIndustrySelect option{ color:#1C2733; }
 
   .hero-visual{
     background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14);
@@ -169,6 +180,7 @@
   .wp-box.blue-lane-mec{ background:var(--blue); }
   .wp-box.blue-lane-ele{ background:var(--blue-soft); }
   .wp-box.blue-lane-swe{ background:var(--blue-med); }
+  .wp-box.blue-lane-cyb{ background:var(--orange); }
   .wp-tags{ position:absolute; top:-7px; right:-7px; display:flex; gap:3px; }
   .wp-ver{
     background:var(--orange-light); color:#fff; font-size:.58rem; font-weight:700;
@@ -196,6 +208,7 @@
   .vc-lane.mec .vc-lane-head{ background:var(--blue); }
   .vc-lane.ele .vc-lane-head{ background:var(--blue-soft); }
   .vc-lane.swe .vc-lane-head{ background:var(--blue-med); }
+  .vc-lane.cyb .vc-lane-head{ background:var(--orange); }
 
   .vc-sup{ display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; }
   .vc-sup .wp-box{ flex:1 1 130px; }
@@ -231,14 +244,6 @@
   .status-item span.desc{ font-size:.84rem; color:var(--mute); }
 
   /* ---------- Industries ---------- */
-  .industry-picker{ display:flex; align-items:center; gap:14px; margin-bottom:2.2rem; flex-wrap:wrap; }
-  .industry-picker label{ font-weight:600; color:var(--navy); font-size:.92rem; }
-  #industrySelect{
-    font-family:var(--font-body); font-size:.95rem; color:var(--navy); font-weight:600;
-    padding:.65em 2.4em .65em 1em; border-radius:8px; border:1.5px solid var(--blue-light);
-    background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%231B4F91" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 14px center;
-    background-size:13px; appearance:none; -webkit-appearance:none; cursor:pointer;
-  }
   .industry-panel{ display:none; }
   .industry-panel.active{ display:block; }
   .industry-intro{ color:var(--mute); max-width:640px; margin-bottom:1.6rem; }
@@ -262,12 +267,6 @@
     .flow-step:not(:last-child)::after{ content:"↓"; right:auto; left:18px; top:auto; bottom:-24px; transform:none; }
     .flow-step{ margin:0 0 34px 0; flex:1 1 100%; }
   }
-
-  .vc-mini-note{
-    background:var(--blue-pale); border:1px solid var(--blue-light); border-radius:10px;
-    padding:14px 18px; font-size:.88rem; color:var(--blue-deep); margin-bottom:1.6rem;
-  }
-  .vc-mini-note a{ color:var(--blue-med); font-weight:600; }
 
   /* ---------- Pricing ---------- */
   .pricing-grid{ display:flex; gap:26px; flex-wrap:wrap; align-items:stretch; }
@@ -311,14 +310,14 @@
   <header>
     <div class="container nav">
       <a class="logo" href="#top">
-        <span class="logo-mark">OR</span>
-        <span class="logo-word">OneRoof</span>
+        <span class="logo-mark">ORT</span>
+        <span class="logo-word">OneRoofTraceability</span>
       </a>
       <ul id="nav-links">
         <li><a href="#intro">Overview</a></li>
         <li><a href="#vcycle">V-Cycle</a></li>
         <li><a href="#governance">Governance</a></li>
-        <li><a href="#industries">Industries</a></li>
+        <li><a href="#intro">Industries</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -334,14 +333,23 @@
       <div class="container hero-grid">
         <div>
           <h1>Every document your teams create. One roof, start to finish.</h1>
-          <p class="lede">OneRoof maps your engineering, HR, finance and accounting documents onto a single lifecycle — who wrote it, who reviewed it, what version it's on, and where it stands right now. Built for teams who get audited and can't afford to lose a paper trail.</p>
+          <p class="lede">OneRoofTraceability maps your engineering, HR, finance and accounting documents onto a single lifecycle — who wrote it, who reviewed it, what version it's on, and where it stands right now. Built for teams who get audited and can't afford to lose a paper trail.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#vcycle">Explore the V-Cycle</a>
             <a class="btn btn-ghost" href="#contact">Talk to us</a>
+            <div class="hero-industry">
+              <label for="heroIndustrySelect">Industry</label>
+              <select id="heroIndustrySelect">
+                <option value="automotive" selected>Automotive</option>
+                <option value="hr">HR</option>
+                <option value="finance">Finance</option>
+                <option value="accounting">Accounting</option>
+              </select>
+            </div>
           </div>
         </div>
         <div class="hero-visual">
-          <div class="hero-visual-label">A document's life inside OneRoof</div>
+          <div class="hero-visual-label">A document's life inside OneRoofTraceability</div>
           <div class="status-flow">
             <div class="status-chip"><span class="dot" style="background:var(--status-draft)"></span> Draft <span class="arrow">↓</span></div>
             <div class="status-chip"><span class="dot" style="background:var(--status-inwork)"></span> In Work <span class="arrow">↓</span></div>
@@ -356,35 +364,54 @@
       <div class="container">
         <div class="section-head">
           <h2>Documentation shouldn't live in five places at once</h2>
-          <p class="lede">Requirements in one drive, drawings in an inbox, sign-offs in someone's memory. OneRoof gives every work product a fixed address, a visible history, and a status anyone can check — so when an auditor, a new hire, or your own team needs a document, there's exactly one place to look.</p>
+          <p class="lede">Requirements in one drive, drawings in an inbox, sign-offs in someone's memory. OneRoofTraceability gives every work product a fixed address, a visible history, and a status anyone can check — so when an auditor, a new hire, or your own team needs a document, there's exactly one place to look.</p>
+        </div>
+
+        <div class="industry-panel active" id="intro-panel-automotive">
+          <p class="industry-intro">Automotive and other regulated engineering programmes run on the full ASPICE-aligned V-Cycle, extended with Mechanical, Electrical and Cybersecurity disciplines alongside Software.</p>
+          <a class="btn btn-outline" href="#vcycle">Jump to the V-Cycle ↓</a>
+        </div>
+
+        <div class="industry-panel" id="intro-panel-hr">
+          <p class="industry-intro">HR teams track a candidate's paperwork the same way engineering tracks a requirement — sourced, screened, reviewed and signed off, with every document owned and dated.</p>
+          <div class="flow">
+            <div class="flow-step"><div class="num">1</div><h4>Source candidates</h4><p>Job requisition approved and posted; applications and referrals land in one pipeline.</p></div>
+            <div class="flow-step"><div class="num">2</div><h4>Screen &amp; shortlist</h4><p>Recruiter reviews CVs against the role profile and shortlists candidates for interview.</p></div>
+            <div class="flow-step"><div class="num">3</div><h4>Interview</h4><p>Hiring panel scores structured interviews; feedback is logged against each candidate record.</p></div>
+            <div class="flow-step"><div class="num">4</div><h4>Offer &amp; negotiate</h4><p>Offer letter drafted, approved by HR and hiring manager, then sent for signature.</p></div>
+            <div class="flow-step"><div class="num">5</div><h4>Onboard</h4><p>Signed offer, contract and right-to-work documents are filed and version-locked in the candidate's record.</p></div>
+          </div>
+        </div>
+
+        <div class="industry-panel" id="intro-panel-finance">
+          <p class="industry-intro">Every bill follows a fixed lifecycle from arrival to archive, so finance can always show who approved a payment and when.</p>
+          <div class="flow">
+            <div class="flow-step"><div class="num">1</div><h4>Bill received</h4><p>Invoice arrives by email, portal or post and is logged with a unique reference.</p></div>
+            <div class="flow-step"><div class="num">2</div><h4>Data capture &amp; validation</h4><p>Amounts, PO number and vendor details are captured and checked against the order.</p></div>
+            <div class="flow-step"><div class="num">3</div><h4>Approval routing</h4><p>Bill routes to the budget owner, then finance, for sign-off above threshold.</p></div>
+            <div class="flow-step"><div class="num">4</div><h4>Payment execution</h4><p>Approved bill is scheduled and paid; the payment reference is attached to the record.</p></div>
+            <div class="flow-step"><div class="num">5</div><h4>Archive &amp; reconciliation</h4><p>Bill is reconciled against the bank statement and archived, version-locked, for audit.</p></div>
+          </div>
+        </div>
+
+        <div class="industry-panel" id="intro-panel-accounting">
+          <p class="industry-intro">Accounting runs a tighter, recurring cycle — every journal entry is reviewed and reconciled before the books close.</p>
+          <div class="flow">
+            <div class="flow-step"><div class="num">1</div><h4>Journal entry</h4><p>Transaction is recorded against the correct account and cost centre.</p></div>
+            <div class="flow-step"><div class="num">2</div><h4>Review &amp; reconciliation</h4><p>A second reviewer checks the entry and reconciles it against source documents.</p></div>
+            <div class="flow-step"><div class="num">3</div><h4>Period close</h4><p>All entries for the period are locked; adjustments require a new, versioned entry.</p></div>
+            <div class="flow-step"><div class="num">4</div><h4>Financial reporting</h4><p>Closed-period figures feed the management and statutory reports.</p></div>
+            <div class="flow-step"><div class="num">5</div><h4>Archive</h4><p>Journals and supporting evidence are archived with a full audit trail.</p></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="vcycle" class="section-alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>The V-Cycle</h2>
-          <p class="lede">Requirements flow down through System, Mechanical, Electrical and Software design, then integrate back up through test and qualification — with Acquisition, Supply, Supporting, Management, Reuse and Process Improvement work products surrounding it. Every box below is a real link and carries its own status.</p>
-        </div>
-        <div class="vcycle-legend">
-          <span><span class="legend-swatch" style="background:var(--status-draft)"></span> Draft</span>
-          <span><span class="legend-swatch" style="background:var(--status-inwork)"></span> In Work</span>
-          <span><span class="legend-swatch" style="background:var(--status-review)"></span> Under Review</span>
-          <span><span class="legend-swatch" style="background:var(--status-final)"></span> Final</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg> Every box links to its document</span>
-        </div>
-        <div class="vcycle-board">
-          <div class="vc-cols" id="vcycle-main"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="governance">
+    <section id="governance" class="section-alt">
       <div class="container">
         <div class="section-head">
           <h2>Built for scrutiny, not just storage</h2>
-          <p class="lede">Five things happen automatically to every document that enters OneRoof — none of them need a spreadsheet on the side.</p>
+          <p class="lede">Five things happen automatically to every document that enters OneRoofTraceability — none of them need a spreadsheet on the side.</p>
         </div>
 
         <div class="gov-grid">
@@ -434,66 +461,26 @@
       </div>
     </section>
 
-    <section id="industries" class="section-alt">
+    <section id="vcycle">
       <div class="container">
         <div class="section-head">
-          <h2>The same idea, tailored per industry</h2>
-          <p class="lede">The stages and work products change; the discipline underneath — one home, visible status, a clear reviewer — stays the same. Pick an industry to see how it's configured.</p>
+          <h2>The V-Cycle</h2>
+          <p class="lede">Requirements flow down through System, Mechanical, Electrical, Software and Cybersecurity design, then integrate back up through test and qualification — with Acquisition, Supply, Supporting, Management, Reuse and Process Improvement work products surrounding it. Every box below is a real link and carries its own status.</p>
         </div>
-
-        <div class="industry-picker">
-          <label for="industrySelect">Industry configuration</label>
-          <select id="industrySelect">
-            <option value="automotive" selected>Automotive</option>
-            <option value="hr">HR</option>
-            <option value="finance">Finance</option>
-            <option value="accounting">Accounting</option>
-          </select>
+        <div class="vcycle-legend">
+          <span><span class="legend-swatch" style="background:var(--status-draft)"></span> Draft</span>
+          <span><span class="legend-swatch" style="background:var(--status-inwork)"></span> In Work</span>
+          <span><span class="legend-swatch" style="background:var(--status-review)"></span> Under Review</span>
+          <span><span class="legend-swatch" style="background:var(--status-final)"></span> Final</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg> Every box links to its document</span>
         </div>
-
-        <div class="industry-panel active" id="panel-automotive">
-          <p class="industry-intro">Automotive and other regulated engineering programmes run on the full ASPICE-aligned V-Cycle, extended with Mechanical and Electrical disciplines alongside Software.</p>
-          <div class="vcycle-board">
-            <div class="vc-cols" id="vcycle-automotive"></div>
-          </div>
-        </div>
-
-        <div class="industry-panel" id="panel-hr">
-          <p class="industry-intro">HR teams track a candidate's paperwork the same way engineering tracks a requirement — sourced, screened, reviewed and signed off, with every document owned and dated.</p>
-          <div class="flow">
-            <div class="flow-step"><div class="num">1</div><h4>Source candidates</h4><p>Job requisition approved and posted; applications and referrals land in one pipeline.</p></div>
-            <div class="flow-step"><div class="num">2</div><h4>Screen &amp; shortlist</h4><p>Recruiter reviews CVs against the role profile and shortlists candidates for interview.</p></div>
-            <div class="flow-step"><div class="num">3</div><h4>Interview</h4><p>Hiring panel scores structured interviews; feedback is logged against each candidate record.</p></div>
-            <div class="flow-step"><div class="num">4</div><h4>Offer &amp; negotiate</h4><p>Offer letter drafted, approved by HR and hiring manager, then sent for signature.</p></div>
-            <div class="flow-step"><div class="num">5</div><h4>Onboard</h4><p>Signed offer, contract and right-to-work documents are filed and version-locked in the candidate's record.</p></div>
-          </div>
-        </div>
-
-        <div class="industry-panel" id="panel-finance">
-          <p class="industry-intro">Every bill follows a fixed lifecycle from arrival to archive, so finance can always show who approved a payment and when.</p>
-          <div class="flow">
-            <div class="flow-step"><div class="num">1</div><h4>Bill received</h4><p>Invoice arrives by email, portal or post and is logged with a unique reference.</p></div>
-            <div class="flow-step"><div class="num">2</div><h4>Data capture &amp; validation</h4><p>Amounts, PO number and vendor details are captured and checked against the order.</p></div>
-            <div class="flow-step"><div class="num">3</div><h4>Approval routing</h4><p>Bill routes to the budget owner, then finance, for sign-off above threshold.</p></div>
-            <div class="flow-step"><div class="num">4</div><h4>Payment execution</h4><p>Approved bill is scheduled and paid; the payment reference is attached to the record.</p></div>
-            <div class="flow-step"><div class="num">5</div><h4>Archive &amp; reconciliation</h4><p>Bill is reconciled against the bank statement and archived, version-locked, for audit.</p></div>
-          </div>
-        </div>
-
-        <div class="industry-panel" id="panel-accounting">
-          <p class="industry-intro">Accounting runs a tighter, recurring cycle — every journal entry is reviewed and reconciled before the books close.</p>
-          <div class="flow">
-            <div class="flow-step"><div class="num">1</div><h4>Journal entry</h4><p>Transaction is recorded against the correct account and cost centre.</p></div>
-            <div class="flow-step"><div class="num">2</div><h4>Review &amp; reconciliation</h4><p>A second reviewer checks the entry and reconciles it against source documents.</p></div>
-            <div class="flow-step"><div class="num">3</div><h4>Period close</h4><p>All entries for the period are locked; adjustments require a new, versioned entry.</p></div>
-            <div class="flow-step"><div class="num">4</div><h4>Financial reporting</h4><p>Closed-period figures feed the management and statutory reports.</p></div>
-            <div class="flow-step"><div class="num">5</div><h4>Archive</h4><p>Journals and supporting evidence are archived with a full audit trail.</p></div>
-          </div>
+        <div class="vcycle-board">
+          <div class="vc-cols" id="vcycle-main"></div>
         </div>
       </div>
     </section>
 
-    <section id="pricing">
+    <section id="pricing" class="section-alt">
       <div class="container">
         <div class="section-head">
           <h2>Pay for what you file, not for who's logged in</h2>
@@ -510,7 +497,7 @@
               <li>Draft / In Work / Under Review / Final status</li>
               <li>Community support</li>
             </ul>
-            <a class="btn btn-outline" href="#contact">Start for free</a>
+            <a class="btn btn-outline" href="mailto:jobcarmen@yahoo.com?subject=OneRoofTraceability%20%E2%80%94%20Free%20plan">Start for free</a>
           </div>
           <div class="price-card highlight">
             <h3>Pay per use</h3>
@@ -522,13 +509,13 @@
               <li>Automated workflow &amp; approval gates</li>
               <li>Scales up or down with your document count, automatically</li>
             </ul>
-            <a class="btn btn-primary" href="#contact">Get a rate for your volume</a>
+            <a class="btn btn-primary" href="mailto:jobcarmen@yahoo.com?subject=OneRoofTraceability%20%E2%80%94%20Pay-per-use%20rate%20request">Get a rate for your volume</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section-alt">
+    <section id="contact">
       <div class="container">
         <div class="contact-card">
           <div>
@@ -543,7 +530,7 @@
 
   <footer>
     <div class="container">
-      <span>OneRoof — Generic Industry Configuration, Document Control v1.0</span>
+      <span>OneRoofTraceability — Generic Industry Configuration, Document Control v1.0</span>
       <span><a href="mailto:jobcarmen@yahoo.com">jobcarmen@yahoo.com</a></span>
     </div>
   </footer>
@@ -587,6 +574,10 @@
         ["SWE.1","Software Req. Analysis","final","v1.0"], ["SWE.2","Software Arch. Design"],
         ["SWE.3","Detailed Design & Unit Constr."], ["SWE.4","Software Unit Verification"],
       ]},
+      cyb: { label:"Cybersecurity", items:[
+        ["CYB.1","Security Requirements Analysis","review"], ["CYB.2","Security Design"],
+        ["CYB.3","Detailed Design & Build"], ["CYB.4","Security Verification"],
+      ]},
     },
     sup: { cls:"med", items: [
       ["SUP.1","Quality Assurance"], ["SUP.2","Verification"], ["SUP.4","Joint Review"],
@@ -625,15 +616,15 @@
     const right = groupBlock(VC.man) + groupBlock(VC.reu) + groupBlock(VC.pim);
 
     const sysRow = `<div class="vc-sys-row">${VC.sys.items.map(([c,t,s,v]) => wpBox(c,t,VC.sys.cls,s,v)).join("")}</div>`;
-    const connectorDown = `<div class="vc-connector"><span class="glyph">↓</span>splits into Mechanical, Electrical & Software</div>`;
-    const lanes = `<div class="vc-lanes">${laneBlock("mec",VC.lanes.mec)}${laneBlock("ele",VC.lanes.ele)}${laneBlock("swe",VC.lanes.swe)}</div>`;
+    const connectorDown = `<div class="vc-connector"><span class="glyph">↓</span>splits into Mechanical, Electrical, Software &amp; Cybersecurity</div>`;
+    const lanes = `<div class="vc-lanes">${laneBlock("mec",VC.lanes.mec)}${laneBlock("ele",VC.lanes.ele)}${laneBlock("swe",VC.lanes.swe)}${laneBlock("cyb",VC.lanes.cyb)}</div>`;
     const connectorUp = `<div class="vc-connector"><span class="glyph">↑</span>re-integrates at System Integration &amp; Test</div>`;
     const supRow = `<div class="vc-group"><div class="vc-group-title">Supporting Process Group (SUP)</div><div class="vc-sup">${VC.sup.items.map(([c,t])=>wpBox(c,t,VC.sup.cls)).join("")}</div></div>`;
 
     el.innerHTML = `
       <div class="vc-col-left">${left}</div>
       <div class="vc-col-center">
-        <div class="vc-group-title">System Engineering (SYS) — with Mechanical, Electrical &amp; Software disciplines</div>
+        <div class="vc-group-title">System Engineering (SYS) — with Mechanical, Electrical, Software &amp; Cybersecurity disciplines</div>
         ${sysRow}${connectorDown}${lanes}${connectorUp}${supRow}
       </div>
       <div class="vc-col-right">${right}</div>
@@ -641,15 +632,18 @@
   }
 
   renderVCycle("vcycle-main");
-  renderVCycle("vcycle-automotive");
 
-  // ---------------- Industry dropdown ----------------
-  const industrySelectEl = document.getElementById("industrySelect");
-  industrySelectEl.addEventListener("change", () => {
-    document.querySelectorAll(".industry-panel").forEach(p => p.classList.remove("active"));
-    const panel = document.getElementById("panel-" + industrySelectEl.value);
-    if(panel) panel.classList.add("active");
-  });
+  // ---------------- Industry dropdowns (scoped so each picker only touches its own panels) ----------------
+  function wireIndustryPicker(selectEl, panelPrefix){
+    if(!selectEl) return;
+    const panels = document.querySelectorAll('[id^="' + panelPrefix + '"]');
+    selectEl.addEventListener("change", () => {
+      panels.forEach(p => p.classList.remove("active"));
+      const panel = document.getElementById(panelPrefix + selectEl.value);
+      if(panel) panel.classList.add("active");
+    });
+  }
+  wireIndustryPicker(document.getElementById("heroIndustrySelect"), "intro-panel-");
 
   // ---------------- Mobile nav ----------------
   const navToggleBtn = document.getElementById("navToggle");
