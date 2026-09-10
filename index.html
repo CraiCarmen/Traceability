@@ -248,6 +248,58 @@
   .industry-panel.active{ display:block; }
   .industry-intro{ color:var(--mute); max-width:640px; margin-bottom:1.6rem; }
 
+  /* ---------- Automotive SPICE capability levels ---------- */
+  .aspice-levels{
+    margin-top:1.8rem; background:#fff; border:1px solid var(--line); border-radius:16px;
+    padding:26px 28px 28px;
+  }
+  .aspice-levels-head{ margin-bottom:1.4rem; }
+  .aspice-levels-head h3{ margin-bottom:.35em; }
+  .aspice-levels-lede{ color:var(--mute); font-size:.92rem; max-width:640px; margin-bottom:1.1rem; }
+  .aspice-level-picker{ display:flex; align-items:center; gap:.7em; flex-wrap:wrap; }
+  .aspice-level-picker label{ font-size:.86rem; font-weight:700; color:var(--navy); }
+  #aspiceLevelSelect{
+    font-family:var(--font-body); font-size:.92rem; color:var(--navy); font-weight:600;
+    padding:.62em 2.3em .62em 1em; border-radius:8px; border:1.5px solid var(--blue-light);
+    background:var(--blue-pale) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2313315C" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 14px center;
+    background-size:13px; appearance:none; -webkit-appearance:none; cursor:pointer;
+  }
+  .aspice-level-panel{ display:none; }
+  .aspice-level-panel.active{ display:block; }
+  .aspice-level-card{
+    border:1px solid var(--line); border-radius:12px; padding:22px 24px; background:var(--pale);
+  }
+  .aspice-level-title{ display:flex; align-items:center; gap:.8em; margin-bottom:.9rem; }
+  .aspice-level-num{
+    width:38px; height:38px; border-radius:50%; background:var(--navy); color:#fff; flex:none;
+    display:flex; align-items:center; justify-content:center; font-family:var(--font-head);
+    font-weight:700; font-size:1.05rem;
+  }
+  .aspice-level-title h4{ margin:0; font-size:1.08rem; color:var(--navy); }
+  .aspice-level-pa{ font-size:.78rem; color:var(--mute); font-weight:600; }
+  .aspice-keywords{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1rem; }
+  .aspice-keywords .kw{
+    background:var(--blue-pale); color:var(--blue-med); border:1px solid var(--blue-light);
+    border-radius:999px; padding:.32em .9em; font-size:.78rem; font-weight:700;
+  }
+  .aspice-desc{ font-size:.92rem; color:var(--text); margin-bottom:1.1rem; }
+  .aspice-maturity{
+    background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px 16px;
+  }
+  .aspice-maturity strong{ display:block; color:var(--navy); font-size:.86rem; margin-bottom:.4em; }
+  .aspice-maturity p{ margin:0 0 .7em; font-size:.86rem; color:var(--mute); }
+  .aspice-status-chip{
+    display:inline-flex; align-items:center; gap:.5em; background:var(--pale);
+    border:1px solid var(--line); border-radius:8px; padding:.4em .75em; font-size:.8rem;
+    color:var(--navy); font-weight:600;
+  }
+  .aspice-status-chip .dot{ width:9px; height:9px; border-radius:50%; flex:none; }
+  .aspice-source{ margin:1.2rem 0 0; font-size:.76rem; color:var(--mute); }
+  @media (max-width:600px){
+    .aspice-levels{ padding:20px; }
+    .aspice-level-card{ padding:18px; }
+  }
+
   .flow{ display:flex; align-items:stretch; gap:0; flex-wrap:wrap; }
   .flow-step{
     flex:1 1 170px; background:#fff; border:1px solid var(--line); border-radius:12px;
@@ -370,6 +422,126 @@
         <div class="industry-panel active" id="intro-panel-automotive">
           <p class="industry-intro">Automotive and other regulated engineering programmes run on the full ASPICE-aligned V-Cycle, extended with Mechanical, Electrical and Cybersecurity disciplines alongside Software.</p>
           <a class="btn btn-outline" href="#vcycle">Jump to the V-Cycle ↓</a>
+
+          <div class="aspice-levels">
+            <div class="aspice-levels-head">
+              <h3>Automotive SPICE® capability levels required</h3>
+              <p class="aspice-levels-lede">Every process box in the V-Cycle below (SYS, SWE, HWE, SUP, MAN and more) can be assessed against six capability levels, as defined in the Automotive SPICE® v4.1 Process Assessment Model (VDA QMC). Levels 2–5 are cumulative — each one requires the level below it to be fully achieved. Pick a level to see what it expects and how that maps to a document's status in OneRoofTraceability.</p>
+              <div class="aspice-level-picker">
+                <label for="aspiceLevelSelect">Capability level</label>
+                <select id="aspiceLevelSelect">
+                  <option value="1" selected>Level 1 — Performed</option>
+                  <option value="2">Level 2 — Managed</option>
+                  <option value="3">Level 3 — Established</option>
+                  <option value="4">Level 4 — Predictable</option>
+                  <option value="5">Level 5 — Innovating</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="aspice-level-panel active" id="aspice-level-panel-1">
+              <div class="aspice-level-card">
+                <div class="aspice-level-title">
+                  <span class="aspice-level-num">1</span>
+                  <div><h4>Performed process</h4><span class="aspice-level-pa">PA 1.1 — Process performance</span></div>
+                </div>
+                <div class="aspice-keywords">
+                  <span class="kw">Purpose achieved</span>
+                  <span class="kw">Base practices carried out</span>
+                  <span class="kw">Outputs exist</span>
+                </div>
+                <p class="aspice-desc">The process delivers on its intended purpose: the defined base practices (e.g. eliciting requirements, designing an architecture, running verification) are actually carried out and produce the expected work products. At this level the question is simply whether the work got done — not yet how well it is planned, reviewed or repeated.</p>
+                <div class="aspice-maturity">
+                  <strong>Document maturity &amp; status</strong>
+                  <p>Work products exist and cover the required content, but formal planning, review cycles and baselines are inconsistent or missing. Records are commonly still being written or awaiting their first pass.</p>
+                  <span class="aspice-status-chip"><span class="dot" style="background:var(--status-draft)"></span> Typically Draft → In Work</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="aspice-level-panel" id="aspice-level-panel-2">
+              <div class="aspice-level-card">
+                <div class="aspice-level-title">
+                  <span class="aspice-level-num">2</span>
+                  <div><h4>Managed process</h4><span class="aspice-level-pa">PA 2.1 Performance management · PA 2.2 Work product management</span></div>
+                </div>
+                <div class="aspice-keywords">
+                  <span class="kw">Planned &amp; monitored</span>
+                  <span class="kw">Resourced</span>
+                  <span class="kw">Work products controlled</span>
+                  <span class="kw">Reviewed against criteria</span>
+                </div>
+                <p class="aspice-desc">The performed process from Level 1 is now managed: it is planned, resourced, monitored against that plan and adjusted when needed. Its work products are properly identified, documented, reviewed against defined criteria, and placed under change and configuration control rather than left to individual habit.</p>
+                <div class="aspice-maturity">
+                  <strong>Document maturity &amp; status</strong>
+                  <p>Documents carry a named owner and reviewer, move through a real review cycle, and are version-controlled once approved. This is where a work product first earns a formal, auditable status transition.</p>
+                  <span class="aspice-status-chip"><span class="dot" style="background:var(--status-review)"></span> Typically Under Review → Final, version-locked</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="aspice-level-panel" id="aspice-level-panel-3">
+              <div class="aspice-level-card">
+                <div class="aspice-level-title">
+                  <span class="aspice-level-num">3</span>
+                  <div><h4>Established process</h4><span class="aspice-level-pa">PA 3.1 Process definition · PA 3.2 Process deployment</span></div>
+                </div>
+                <div class="aspice-keywords">
+                  <span class="kw">Standard process</span>
+                  <span class="kw">Tailored from org assets</span>
+                  <span class="kw">Consistently deployed</span>
+                </div>
+                <p class="aspice-desc">The managed process is now built from a defined, organization-wide standard process, tailored to the specific project, and deployed consistently across projects — not reinvented each time. Roles, competencies and infrastructure needed to run it are in place organization-wide.</p>
+                <div class="aspice-maturity">
+                  <strong>Document maturity &amp; status</strong>
+                  <p>Documents follow shared templates and naming conventions so a Final work product looks and behaves the same way on every project, making audits and cross-project comparison straightforward.</p>
+                  <span class="aspice-status-chip"><span class="dot" style="background:var(--status-final)"></span> Final, produced from a standard organizational template</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="aspice-level-panel" id="aspice-level-panel-4">
+              <div class="aspice-level-card">
+                <div class="aspice-level-title">
+                  <span class="aspice-level-num">4</span>
+                  <div><h4>Predictable process</h4><span class="aspice-level-pa">PA 4.1 Quantitative analysis · PA 4.2 Quantitative control</span></div>
+                </div>
+                <div class="aspice-keywords">
+                  <span class="kw">Quantitative targets</span>
+                  <span class="kw">Measured &amp; analyzed</span>
+                  <span class="kw">Variation controlled</span>
+                </div>
+                <p class="aspice-desc">The established process now operates predictably within defined quantitative limits. Measurement data is collected and analyzed to identify the assignable causes behind variation, and corrective action is taken to keep the process performing within its expected range.</p>
+                <div class="aspice-maturity">
+                  <strong>Document maturity &amp; status</strong>
+                  <p>Final work products are accompanied by measurement records — trend data, defect rates, review effectiveness — that demonstrate the process is hitting its targets consistently, not just that a reviewer signed off once.</p>
+                  <span class="aspice-status-chip"><span class="dot" style="background:var(--status-final)"></span> Final, backed by quantitative process measures</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="aspice-level-panel" id="aspice-level-panel-5">
+              <div class="aspice-level-card">
+                <div class="aspice-level-title">
+                  <span class="aspice-level-num">5</span>
+                  <div><h4>Innovating process</h4><span class="aspice-level-pa">PA 5.1 Process innovation · PA 5.2 Innovation implementation</span></div>
+                </div>
+                <div class="aspice-keywords">
+                  <span class="kw">Continuous improvement</span>
+                  <span class="kw">Root-cause driven</span>
+                  <span class="kw">Responds to org change</span>
+                </div>
+                <p class="aspice-desc">The predictable process is now continually improved. Improvement opportunities are identified from the quantitative data gathered at Level 4 and from innovative ideas and technologies, then implemented in a controlled way so the process keeps responding to changing organizational goals.</p>
+                <div class="aspice-maturity">
+                  <strong>Document maturity &amp; status</strong>
+                  <p>Lessons captured from Final, archived documents feed back into updated organizational templates and criteria, so the next project's baseline starts from an already-improved standard rather than the same starting point.</p>
+                  <span class="aspice-status-chip"><span class="dot" style="background:var(--status-final)"></span> Final, feeding continuous improvement of the org's templates</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="aspice-source">Level definitions summarized from VDA QMC, Automotive SPICE® Process Assessment / Reference Model, v4.1 (2026-08-24).</p>
+          </div>
         </div>
 
         <div class="industry-panel" id="intro-panel-hr">
@@ -644,6 +816,7 @@
     });
   }
   wireIndustryPicker(document.getElementById("heroIndustrySelect"), "intro-panel-");
+  wireIndustryPicker(document.getElementById("aspiceLevelSelect"), "aspice-level-panel-");
 
   // ---------------- Mobile nav ----------------
   const navToggleBtn = document.getElementById("navToggle");
