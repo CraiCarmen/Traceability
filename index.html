@@ -53,6 +53,10 @@
   .lede{ color:var(--mute); font-size:1.05rem; max-width:640px; }
   .eyebrow{ color:var(--orange); font-weight:700; font-size:.82rem; margin:0 0 .4em; }
   .section-head{ max-width:680px; margin-bottom:2.4rem; }
+  #intro .section-head, #vcycle .section-head{ max-width:none; }
+  #intro .section-head .lede, #vcycle .section-head .lede{
+    text-align:justify; text-align-last:left; max-width:var(--maxw);
+  }
   .section-alt{ background:var(--pale); }
   .btn{
     display:inline-flex; align-items:center; gap:.5em;
@@ -68,6 +72,15 @@
   .btn-ghost:hover{ background:rgba(255,255,255,.12); }
   .btn-outline{ background:transparent; color:var(--blue-med); border-color:var(--blue-light); }
   .btn-outline:hover{ background:var(--blue-pale); }
+  .btn-gradient-blue{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--blue-deep) 45%, var(--blue-med) 100%);
+    color:#fff; border-color:transparent;
+    box-shadow:0 6px 16px rgba(11,37,69,.35);
+  }
+  .btn-gradient-blue:hover{
+    background:linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-med) 55%, var(--blue) 100%);
+    box-shadow:0 10px 22px rgba(11,37,69,.42);
+  }
   :focus-visible{ outline:2.5px solid var(--orange); outline-offset:2px; }
 
   /* ---------- Header / Nav ---------- */
@@ -152,9 +165,30 @@
   }
 
   /* ---------- V-Cycle diagram ---------- */
-  .vcycle-legend{ display:flex; flex-wrap:wrap; gap:22px; margin-bottom:1.8rem; font-size:.86rem; color:var(--mute); }
-  .vcycle-legend span{ display:inline-flex; align-items:center; gap:.5em; margin-right:22px; }
+  .vcycle-legend{ display:flex; flex-wrap:wrap; align-items:center; gap:22px; margin-bottom:1.2rem; font-size:.86rem; color:var(--mute); }
+  .vcycle-legend span{ display:inline-flex; align-items:center; gap:.5em; margin-right:0; }
   .legend-swatch{ width:12px; height:12px; border-radius:50%; }
+  .legend-steps{ display:flex; align-items:center; flex-wrap:wrap; gap:10px; }
+  .legend-step{
+    display:inline-flex; align-items:center; gap:.55em; padding:.4em .8em .4em .5em;
+    border-radius:999px; border:1.5px solid transparent; transition:border-color .15s, background .15s;
+  }
+  .legend-step .legend-order{
+    width:18px; height:18px; border-radius:50%; background:var(--pale); color:var(--navy);
+    font-size:.7rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .legend-step.active{ border-color:var(--blue-light); background:var(--blue-pale); color:var(--navy); font-weight:700; }
+  .legend-step.active .legend-order{ background:var(--navy); color:#fff; }
+  .legend-arrow{ color:var(--line); font-size:.9rem; }
+  .legend-note{ color:var(--mute); }
+  .vcycle-level-banner{
+    display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap;
+    background:var(--blue-pale); border:1px solid var(--blue-light); border-radius:12px;
+    padding:14px 20px; margin-bottom:1.4rem;
+  }
+  .vcycle-level-banner-text strong{ display:block; color:var(--navy); font-size:.94rem; margin-bottom:.2em; }
+  .vcycle-level-banner-text p{ margin:0; font-size:.84rem; color:var(--blue-med); max-width:640px; }
+  .btn-sm{ padding:.55em 1.1em; font-size:.82rem; white-space:nowrap; }
   .vcycle-board{
     background:var(--pale); border:1px solid var(--line); border-radius:16px;
     padding:28px; overflow-x:auto;
@@ -240,6 +274,11 @@
   }
   .status-item{ flex:1 1 200px; display:flex; gap:.7em; }
   .status-item .legend-swatch{ width:13px; height:13px; margin-top:5px; flex:none; }
+  .status-item .step-order{
+    width:19px; height:19px; border-radius:50%; background:var(--pale); color:var(--navy);
+    font-size:.7rem; font-weight:800; display:flex; align-items:center; justify-content:center;
+    flex:none; margin-top:2px;
+  }
   .status-item strong{ display:block; color:var(--navy); font-size:.92rem; }
   .status-item span.desc{ font-size:.84rem; color:var(--mute); }
 
@@ -255,15 +294,24 @@
   }
   .aspice-levels-head{ margin-bottom:1.4rem; }
   .aspice-levels-head h3{ margin-bottom:.35em; }
-  .aspice-levels-lede{ color:var(--mute); font-size:.92rem; max-width:640px; margin-bottom:1.1rem; }
-  .aspice-level-picker{ display:flex; align-items:center; gap:.7em; flex-wrap:wrap; }
-  .aspice-level-picker label{ font-size:.86rem; font-weight:700; color:var(--navy); }
-  #aspiceLevelSelect{
-    font-family:var(--font-body); font-size:.92rem; color:var(--navy); font-weight:600;
-    padding:.62em 2.3em .62em 1em; border-radius:8px; border:1.5px solid var(--blue-light);
-    background:var(--blue-pale) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2313315C" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 14px center;
-    background-size:13px; appearance:none; -webkit-appearance:none; cursor:pointer;
+  .aspice-levels-lede{ color:var(--mute); font-size:.92rem; max-width:none; margin-bottom:1.1rem; text-align:justify; text-align-last:left; }
+  .aspice-level-picker{
+    display:flex; align-items:center; gap:0; flex-wrap:wrap;
+    background:linear-gradient(135deg, var(--navy) 0%, var(--blue-deep) 45%, var(--blue-med) 100%);
+    border-radius:12px; padding:10px 14px; box-shadow:0 8px 20px rgba(11,37,69,.28);
   }
+  .aspice-level-picker label{
+    font-size:.86rem; font-weight:800; color:#fff; letter-spacing:.02em;
+    margin-right:.9em; text-transform:uppercase; font-size:.76rem;
+  }
+  #aspiceLevelSelect{
+    font-family:var(--font-body); font-size:.92rem; color:var(--navy); font-weight:700;
+    padding:.62em 2.3em .62em 1em; border-radius:8px; border:1.5px solid transparent;
+    background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2313315C" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 14px center;
+    background-size:13px; appearance:none; -webkit-appearance:none; cursor:pointer;
+    box-shadow:0 2px 6px rgba(0,0,0,.15);
+  }
+  #aspiceLevelSelect:hover{ box-shadow:0 4px 12px rgba(0,0,0,.22); }
   .aspice-level-panel{ display:none; }
   .aspice-level-panel.active{ display:block; }
   .aspice-level-card{
@@ -298,6 +346,63 @@
   @media (max-width:600px){
     .aspice-levels{ padding:20px; }
     .aspice-level-card{ padding:18px; }
+  }
+
+  /* ---------- Work product document template modal ---------- */
+  .doc-modal-overlay{
+    position:fixed; inset:0; background:rgba(11,37,69,.6); backdrop-filter:blur(2px);
+    display:none; align-items:flex-start; justify-content:center; z-index:1000;
+    padding:40px 20px; overflow-y:auto;
+  }
+  .doc-modal-overlay.open{ display:flex; }
+  .doc-modal{
+    background:#fff; width:100%; max-width:760px; border-radius:10px;
+    box-shadow:0 30px 80px rgba(0,0,0,.35); overflow:hidden; margin-bottom:40px;
+  }
+  .doc-modal-bar{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--blue-deep) 55%, var(--blue-med) 100%);
+    color:#fff; padding:14px 22px; display:flex; align-items:center; justify-content:space-between;
+    gap:12px; position:sticky; top:0;
+  }
+  .doc-modal-bar-title{ font-weight:700; font-size:.9rem; letter-spacing:.01em; }
+  .doc-modal-actions{ display:flex; gap:8px; flex:none; }
+  .doc-modal-actions button{
+    background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.45); color:#fff;
+    border-radius:6px; padding:.42em .95em; font-size:.8rem; cursor:pointer; font-family:var(--font-body);
+    font-weight:600;
+  }
+  .doc-modal-actions button:hover{ background:rgba(255,255,255,.3); }
+  .doc-body{ font-family:var(--font-head); color:var(--ink); padding:36px 42px 44px; }
+  .doc-titleblock{ text-align:center; margin-bottom:1.7rem; border-bottom:3px solid var(--navy); padding-bottom:1.2rem; }
+  .doc-titleblock .doc-kicker{
+    font-family:var(--font-body); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--blue-med); font-weight:700;
+  }
+  .doc-titleblock h2{ margin:.3em 0 .15em; font-size:1.55rem; color:var(--navy); }
+  .doc-titleblock .doc-process-ref{ font-family:var(--font-body); font-size:.82rem; color:var(--mute); }
+  .doc-control-table{ width:100%; border-collapse:collapse; margin-bottom:1.9rem; font-family:var(--font-body); font-size:.82rem; }
+  .doc-control-table td{ border:1px solid var(--line); padding:.55em .75em; }
+  .doc-control-table td.k{ background:var(--pale); font-weight:700; color:var(--navy); width:34%; }
+  .doc-section{ margin-bottom:1.6rem; }
+  .doc-section h3{ font-size:1.04rem; color:var(--navy); border-bottom:1.5px solid var(--line); padding-bottom:.35em; margin-bottom:.7em; }
+  .doc-section > p{ font-family:var(--font-body); font-size:.9rem; line-height:1.65; margin:0 0 .6em; text-align:justify; text-align-last:left; }
+  .doc-subsection{ margin-bottom:1em; }
+  .doc-subsection h4{ font-family:var(--font-body); font-size:.88rem; color:var(--blue-deep); margin:0 0 .3em; }
+  .doc-subsection .placeholder{ font-family:var(--font-body); font-size:.85rem; color:var(--mute); margin:0; font-style:italic; border-left:3px solid var(--blue-light); padding-left:.7em; }
+  .doc-refs{ font-family:var(--font-body); font-size:.85rem; padding-left:1.2em; margin:0; color:var(--text); }
+  .doc-refs li{ margin-bottom:.35em; }
+  .doc-sign-table{ width:100%; border-collapse:collapse; font-family:var(--font-body); font-size:.82rem; }
+  .doc-sign-table th, .doc-sign-table td{ border:1px solid var(--line); padding:.65em .75em; text-align:left; }
+  .doc-sign-table th{ background:var(--pale); color:var(--navy); }
+  .doc-footer-note{ font-family:var(--font-body); font-size:.74rem; color:var(--mute); margin-top:1.9rem; padding-top:1rem; border-top:1px solid var(--line); }
+  @media (max-width:600px){
+    .doc-body{ padding:24px 20px 30px; }
+  }
+  @media print{
+    body > *:not(.doc-modal-overlay){ display:none !important; }
+    .doc-modal-overlay{ position:static; background:#fff; padding:0; display:block; overflow:visible; }
+    .doc-modal-bar{ display:none; }
+    .doc-modal{ box-shadow:none; max-width:none; }
   }
 
   .flow{ display:flex; align-items:stretch; gap:0; flex-wrap:wrap; }
@@ -421,8 +526,101 @@
 
         <div class="industry-panel active" id="intro-panel-automotive">
           <p class="industry-intro">Automotive and other regulated engineering programmes run on the full ASPICE-aligned V-Cycle, extended with Mechanical, Electrical and Cybersecurity disciplines alongside Software.</p>
-          <a class="btn btn-outline" href="#vcycle">Jump to the V-Cycle ↓</a>
+          <a class="btn btn-outline" href="#aspice-levels-section">Jump to Automotive SPICE® levels ↓</a>
+        </div>
 
+        <div class="industry-panel" id="intro-panel-hr">
+          <p class="industry-intro">HR teams track a candidate's paperwork the same way engineering tracks a requirement — sourced, screened, reviewed and signed off, with every document owned and dated.</p>
+          <div class="flow">
+            <div class="flow-step"><div class="num">1</div><h4>Source candidates</h4><p>Job requisition approved and posted; applications and referrals land in one pipeline.</p></div>
+            <div class="flow-step"><div class="num">2</div><h4>Screen &amp; shortlist</h4><p>Recruiter reviews CVs against the role profile and shortlists candidates for interview.</p></div>
+            <div class="flow-step"><div class="num">3</div><h4>Interview</h4><p>Hiring panel scores structured interviews; feedback is logged against each candidate record.</p></div>
+            <div class="flow-step"><div class="num">4</div><h4>Offer &amp; negotiate</h4><p>Offer letter drafted, approved by HR and hiring manager, then sent for signature.</p></div>
+            <div class="flow-step"><div class="num">5</div><h4>Onboard</h4><p>Signed offer, contract and right-to-work documents are filed and version-locked in the candidate's record.</p></div>
+          </div>
+        </div>
+
+        <div class="industry-panel" id="intro-panel-finance">
+          <p class="industry-intro">Every bill follows a fixed lifecycle from arrival to archive, so finance can always show who approved a payment and when.</p>
+          <div class="flow">
+            <div class="flow-step"><div class="num">1</div><h4>Bill received</h4><p>Invoice arrives by email, portal or post and is logged with a unique reference.</p></div>
+            <div class="flow-step"><div class="num">2</div><h4>Data capture &amp; validation</h4><p>Amounts, PO number and vendor details are captured and checked against the order.</p></div>
+            <div class="flow-step"><div class="num">3</div><h4>Approval routing</h4><p>Bill routes to the budget owner, then finance, for sign-off above threshold.</p></div>
+            <div class="flow-step"><div class="num">4</div><h4>Payment execution</h4><p>Approved bill is scheduled and paid; the payment reference is attached to the record.</p></div>
+            <div class="flow-step"><div class="num">5</div><h4>Archive &amp; reconciliation</h4><p>Bill is reconciled against the bank statement and archived, version-locked, for audit.</p></div>
+          </div>
+        </div>
+
+        <div class="industry-panel" id="intro-panel-accounting">
+          <p class="industry-intro">Accounting runs a tighter, recurring cycle — every journal entry is reviewed and reconciled before the books close.</p>
+          <div class="flow">
+            <div class="flow-step"><div class="num">1</div><h4>Journal entry</h4><p>Transaction is recorded against the correct account and cost centre.</p></div>
+            <div class="flow-step"><div class="num">2</div><h4>Review &amp; reconciliation</h4><p>A second reviewer checks the entry and reconciles it against source documents.</p></div>
+            <div class="flow-step"><div class="num">3</div><h4>Period close</h4><p>All entries for the period are locked; adjustments require a new, versioned entry.</p></div>
+            <div class="flow-step"><div class="num">4</div><h4>Financial reporting</h4><p>Closed-period figures feed the management and statutory reports.</p></div>
+            <div class="flow-step"><div class="num">5</div><h4>Archive</h4><p>Journals and supporting evidence are archived with a full audit trail.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="governance" class="section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Built for scrutiny, not just storage</h2>
+          <p class="lede">Five things happen automatically to every document that enters OneRoofTraceability — none of them need a spreadsheet on the side.</p>
+        </div>
+
+        <div class="gov-grid">
+          <div class="gov-card">
+            <div class="gov-icon" style="background:var(--blue-med)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><circle cx="11" cy="14" r="3.4"/><path d="M13.4 16.4 16 19"/></svg>
+            </div>
+            <h3>Audit trail</h3>
+            <p>Every create, edit, review and approval is timestamped and attributed. An assessor can trace one requirement from elicitation to qualification test without leaving the system.</p>
+          </div>
+          <div class="gov-card">
+            <div class="gov-icon" style="background:var(--orange)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+            </div>
+            <h3>Version control</h3>
+            <p>Every record carries a visible version tag. Superseded versions are archived, never deleted, so the current baseline and its history sit side by side.</p>
+          </div>
+          <div class="gov-card">
+            <div class="gov-icon" style="background:var(--blue)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><path d="M2.8 19c.6-3.4 3-5.2 5.7-5.2s5.1 1.8 5.7 5.2"/><circle cx="17" cy="8.5" r="2.4"/><path d="M15.6 13.9c2.3.2 4 1.9 4.5 4.7"/></svg>
+            </div>
+            <h3>Reviewers</h3>
+            <p>Each work product routes to a named technical and quality reviewer. Nothing moves to the next stage until the right person has signed off.</p>
+          </div>
+          <div class="gov-card">
+            <div class="gov-icon" style="background:var(--navy)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="6" r="2.2"/><circle cx="18.5" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.4 7.2 10.3 16M16.6 7.2 13.7 16M7.7 6h8.6"/></svg>
+            </div>
+            <h3>Workflow</h3>
+            <p>Classification, routing and approval gates run automatically. People are only pulled in for the review steps that genuinely need a human judgment call.</p>
+          </div>
+          <div class="gov-card">
+            <div class="gov-icon" style="background:var(--blue-med)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg>
+            </div>
+            <h3>Access restrictions</h3>
+            <p>Permissions follow role and discipline. Mechanical engineers see mechanical records by default; who can read, edit or approve is set per group, not per file.</p>
+          </div>
+        </div>
+
+        <div class="status-legend">
+          <div class="status-item"><span class="step-order">1</span><span class="legend-swatch" style="background:var(--status-draft);border-radius:50%;margin-top:5px"></span><span><strong>Draft</strong><span class="desc">Being written. Not yet ready for review.</span></span></div>
+          <div class="status-item"><span class="step-order">2</span><span class="legend-swatch" style="background:var(--status-inwork);border-radius:50%;margin-top:5px"></span><span><strong>In Work</strong><span class="desc">Actively being developed against a requirement or design.</span></span></div>
+          <div class="status-item"><span class="step-order">3</span><span class="legend-swatch" style="background:var(--status-review);border-radius:50%;margin-top:5px"></span><span><strong>Under Review</strong><span class="desc">With a named reviewer, awaiting sign-off.</span></span></div>
+          <div class="status-item"><span class="step-order">4</span><span class="legend-swatch" style="background:var(--status-final);border-radius:50%;margin-top:5px"></span><span><strong>Final</strong><span class="desc">Approved, version-locked and ready for audit.</span></span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="aspice-levels-section" class="section-alt">
+      <div class="container">
           <div class="aspice-levels">
             <div class="aspice-levels-head">
               <h3>Automotive SPICE® capability levels required</h3>
@@ -542,94 +740,6 @@
 
             <p class="aspice-source">Level definitions summarized from VDA QMC, Automotive SPICE® Process Assessment / Reference Model, v4.1 (2026-08-24).</p>
           </div>
-        </div>
-
-        <div class="industry-panel" id="intro-panel-hr">
-          <p class="industry-intro">HR teams track a candidate's paperwork the same way engineering tracks a requirement — sourced, screened, reviewed and signed off, with every document owned and dated.</p>
-          <div class="flow">
-            <div class="flow-step"><div class="num">1</div><h4>Source candidates</h4><p>Job requisition approved and posted; applications and referrals land in one pipeline.</p></div>
-            <div class="flow-step"><div class="num">2</div><h4>Screen &amp; shortlist</h4><p>Recruiter reviews CVs against the role profile and shortlists candidates for interview.</p></div>
-            <div class="flow-step"><div class="num">3</div><h4>Interview</h4><p>Hiring panel scores structured interviews; feedback is logged against each candidate record.</p></div>
-            <div class="flow-step"><div class="num">4</div><h4>Offer &amp; negotiate</h4><p>Offer letter drafted, approved by HR and hiring manager, then sent for signature.</p></div>
-            <div class="flow-step"><div class="num">5</div><h4>Onboard</h4><p>Signed offer, contract and right-to-work documents are filed and version-locked in the candidate's record.</p></div>
-          </div>
-        </div>
-
-        <div class="industry-panel" id="intro-panel-finance">
-          <p class="industry-intro">Every bill follows a fixed lifecycle from arrival to archive, so finance can always show who approved a payment and when.</p>
-          <div class="flow">
-            <div class="flow-step"><div class="num">1</div><h4>Bill received</h4><p>Invoice arrives by email, portal or post and is logged with a unique reference.</p></div>
-            <div class="flow-step"><div class="num">2</div><h4>Data capture &amp; validation</h4><p>Amounts, PO number and vendor details are captured and checked against the order.</p></div>
-            <div class="flow-step"><div class="num">3</div><h4>Approval routing</h4><p>Bill routes to the budget owner, then finance, for sign-off above threshold.</p></div>
-            <div class="flow-step"><div class="num">4</div><h4>Payment execution</h4><p>Approved bill is scheduled and paid; the payment reference is attached to the record.</p></div>
-            <div class="flow-step"><div class="num">5</div><h4>Archive &amp; reconciliation</h4><p>Bill is reconciled against the bank statement and archived, version-locked, for audit.</p></div>
-          </div>
-        </div>
-
-        <div class="industry-panel" id="intro-panel-accounting">
-          <p class="industry-intro">Accounting runs a tighter, recurring cycle — every journal entry is reviewed and reconciled before the books close.</p>
-          <div class="flow">
-            <div class="flow-step"><div class="num">1</div><h4>Journal entry</h4><p>Transaction is recorded against the correct account and cost centre.</p></div>
-            <div class="flow-step"><div class="num">2</div><h4>Review &amp; reconciliation</h4><p>A second reviewer checks the entry and reconciles it against source documents.</p></div>
-            <div class="flow-step"><div class="num">3</div><h4>Period close</h4><p>All entries for the period are locked; adjustments require a new, versioned entry.</p></div>
-            <div class="flow-step"><div class="num">4</div><h4>Financial reporting</h4><p>Closed-period figures feed the management and statutory reports.</p></div>
-            <div class="flow-step"><div class="num">5</div><h4>Archive</h4><p>Journals and supporting evidence are archived with a full audit trail.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="governance" class="section-alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Built for scrutiny, not just storage</h2>
-          <p class="lede">Five things happen automatically to every document that enters OneRoofTraceability — none of them need a spreadsheet on the side.</p>
-        </div>
-
-        <div class="gov-grid">
-          <div class="gov-card">
-            <div class="gov-icon" style="background:var(--blue-med)">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><circle cx="11" cy="14" r="3.4"/><path d="M13.4 16.4 16 19"/></svg>
-            </div>
-            <h3>Audit trail</h3>
-            <p>Every create, edit, review and approval is timestamped and attributed. An assessor can trace one requirement from elicitation to qualification test without leaving the system.</p>
-          </div>
-          <div class="gov-card">
-            <div class="gov-icon" style="background:var(--orange)">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
-            </div>
-            <h3>Version control</h3>
-            <p>Every record carries a visible version tag. Superseded versions are archived, never deleted, so the current baseline and its history sit side by side.</p>
-          </div>
-          <div class="gov-card">
-            <div class="gov-icon" style="background:var(--blue)">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><path d="M2.8 19c.6-3.4 3-5.2 5.7-5.2s5.1 1.8 5.7 5.2"/><circle cx="17" cy="8.5" r="2.4"/><path d="M15.6 13.9c2.3.2 4 1.9 4.5 4.7"/></svg>
-            </div>
-            <h3>Reviewers</h3>
-            <p>Each work product routes to a named technical and quality reviewer. Nothing moves to the next stage until the right person has signed off.</p>
-          </div>
-          <div class="gov-card">
-            <div class="gov-icon" style="background:var(--navy)">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="6" r="2.2"/><circle cx="18.5" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.4 7.2 10.3 16M16.6 7.2 13.7 16M7.7 6h8.6"/></svg>
-            </div>
-            <h3>Workflow</h3>
-            <p>Classification, routing and approval gates run automatically. People are only pulled in for the review steps that genuinely need a human judgment call.</p>
-          </div>
-          <div class="gov-card">
-            <div class="gov-icon" style="background:var(--blue-med)">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg>
-            </div>
-            <h3>Access restrictions</h3>
-            <p>Permissions follow role and discipline. Mechanical engineers see mechanical records by default; who can read, edit or approve is set per group, not per file.</p>
-          </div>
-        </div>
-
-        <div class="status-legend">
-          <div class="status-item"><span class="legend-swatch" style="background:var(--status-draft);border-radius:50%;margin-top:5px"></span><span><strong>Draft</strong><span class="desc">Being written. Not yet ready for review.</span></span></div>
-          <div class="status-item"><span class="legend-swatch" style="background:var(--status-inwork);border-radius:50%;margin-top:5px"></span><span><strong>In Work</strong><span class="desc">Actively being developed against a requirement or design.</span></span></div>
-          <div class="status-item"><span class="legend-swatch" style="background:var(--status-review);border-radius:50%;margin-top:5px"></span><span><strong>Under Review</strong><span class="desc">With a named reviewer, awaiting sign-off.</span></span></div>
-          <div class="status-item"><span class="legend-swatch" style="background:var(--status-final);border-radius:50%;margin-top:5px"></span><span><strong>Final</strong><span class="desc">Approved, version-locked and ready for audit.</span></span></div>
-        </div>
       </div>
     </section>
 
@@ -639,12 +749,24 @@
           <h2>The V-Cycle</h2>
           <p class="lede">Requirements flow down through System, Mechanical, Electrical, Software and Cybersecurity design, then integrate back up through test and qualification — with Acquisition, Supply, Supporting, Management, Reuse and Process Improvement work products surrounding it. Every box below is a real link and carries its own status.</p>
         </div>
-        <div class="vcycle-legend">
-          <span><span class="legend-swatch" style="background:var(--status-draft)"></span> Draft</span>
-          <span><span class="legend-swatch" style="background:var(--status-inwork)"></span> In Work</span>
-          <span><span class="legend-swatch" style="background:var(--status-review)"></span> Under Review</span>
-          <span><span class="legend-swatch" style="background:var(--status-final)"></span> Final</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg> Every box links to its document</span>
+        <div class="vcycle-legend" id="vcycleLegend">
+          <div class="legend-steps">
+            <span class="legend-step" id="legend-step-draft" data-status="draft"><span class="legend-order">1</span><span class="legend-swatch" style="background:var(--status-draft)"></span>Draft</span>
+            <span class="legend-arrow">→</span>
+            <span class="legend-step" id="legend-step-inwork" data-status="inwork"><span class="legend-order">2</span><span class="legend-swatch" style="background:var(--status-inwork)"></span>In Work</span>
+            <span class="legend-arrow">→</span>
+            <span class="legend-step" id="legend-step-review" data-status="review"><span class="legend-order">3</span><span class="legend-swatch" style="background:var(--status-review)"></span>Under Review</span>
+            <span class="legend-arrow">→</span>
+            <span class="legend-step" id="legend-step-final" data-status="final"><span class="legend-order">4</span><span class="legend-swatch" style="background:var(--status-final)"></span>Final</span>
+          </div>
+          <span class="legend-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg> Every box links to its document</span>
+        </div>
+        <div class="vcycle-level-banner" id="vcycleLevelBanner">
+          <div class="vcycle-level-banner-text">
+            <strong id="vcycleLevelBannerTitle">Showing target maturity for Level 1 — Performed</strong>
+            <p id="vcycleLevelBannerDesc">Every work product below is shown at the Draft status required to satisfy this capability level. Pick a different level in the Automotive section above, or view this project's real status.</p>
+          </div>
+          <button class="btn btn-gradient-blue btn-sm" id="vcycleShowActualBtn" type="button">Show actual project status</button>
         </div>
         <div class="vcycle-board">
           <div class="vc-cols" id="vcycle-main"></div>
@@ -707,10 +829,21 @@
     </div>
   </footer>
 
+  <div class="doc-modal-overlay" id="docModalOverlay">
+    <div class="doc-modal" role="dialog" aria-modal="true" aria-labelledby="docModalBarTitle">
+      <div class="doc-modal-bar">
+        <span class="doc-modal-bar-title" id="docModalBarTitle">Document Template</span>
+        <div class="doc-modal-actions">
+          <button type="button" id="docModalPrintBtn">Print</button>
+          <button type="button" id="docModalCloseBtn">Close ✕</button>
+        </div>
+      </div>
+      <div class="doc-body" id="docModalBody"></div>
+    </div>
+  </div>
+
 <script>
   // ---------------- V-Cycle data & renderer ----------------
-  const DOC_BASE = "https://yourcompany.com/docs/";
-
   const VC = {
     acq: { title: "Acquisition (ACQ)", cls: "med", items: [
       ["ACQ.3","Contract Agreement"], ["ACQ.4","Supplier Monitoring"],
@@ -760,12 +893,25 @@
 
   const STATUS_LABEL = { draft:"Draft", inwork:"In Work", review:"Under Review", final:"Final" };
 
+  // Capability level ↔ document status correlation (Automotive SPICE v4.1)
+  const LEVEL_META = {
+    1:{ label:"Level 1 — Performed", status:"draft" },
+    2:{ label:"Level 2 — Managed", status:"inwork" },
+    3:{ label:"Level 3 — Established", status:"review" },
+    4:{ label:"Level 4 — Predictable", status:"final" },
+    5:{ label:"Level 5 — Innovating", status:"final" },
+  };
+  let vcOverrideStatus = null; // when set, every box on the V-Cycle renders at this status
+
   function wpBox(code, title, cls, status, ver){
-    const statusDot = status ? `<span class="wp-status" style="background:var(--status-${status})" title="${STATUS_LABEL[status]}"></span>` : "";
-    const verTag = ver ? `<span class="wp-ver">${ver}</span>` : "";
+    const effStatus = vcOverrideStatus || status;
+    const effVer = vcOverrideStatus ? null : ver;
+    const statusDot = effStatus ? `<span class="wp-status" style="background:var(--status-${effStatus})" title="${STATUS_LABEL[effStatus]}"></span>` : "";
+    const verTag = effVer ? `<span class="wp-ver">${effVer}</span>` : "";
     const tags = (statusDot || verTag) ? `<span class="wp-tags">${verTag}${statusDot}</span>` : "";
-    return `<a class="wp-box ${cls||''}" href="${DOC_BASE}${encodeURIComponent(code)}" target="_blank" rel="noopener"
-              title="Open ${code} — ${title} (${status ? STATUS_LABEL[status] : 'no status set'})">
+    const safeTitle = String(title).replace(/"/g, "&quot;");
+    return `<a class="wp-box ${cls||''}" href="javascript:void(0)" data-code="${code}" data-title="${safeTitle}" data-status="${effStatus||''}"
+              title="Open ${code} — ${title} — view document template (${effStatus ? STATUS_LABEL[effStatus] : 'no status set'})">
               ${tags}<span class="code">${code}</span>${title}
             </a>`;
   }
@@ -803,7 +949,365 @@
     `;
   }
 
-  renderVCycle("vcycle-main");
+  // ---------------- Work product document templates (Automotive SPICE® v4.1 aligned) ----------------
+  // Section guidance shown as an instructional placeholder line under each heading.
+  const GUIDE = {
+    "Functional Requirements":"List each function the system, software or component shall perform, expressed as clear, verifiable, unambiguous statements.",
+    "Non-Functional Requirements":"Specify performance, safety, reliability, usability and other quality requirements the solution must satisfy.",
+    "Interface Requirements":"Define external and internal interfaces, including signals, protocols, tolerances and physical, electrical or software boundaries.",
+    "Constraints & Assumptions":"Record known constraints (regulatory, platform, cost, schedule) and assumptions made when the requirement was written.",
+    "Traceability to Source Requirements":"Provide a bidirectional traceability matrix linking each requirement to its source and to its verification measure.",
+    "Architectural Overview":"Summarize the architecture's purpose, scope and the key design decisions taken.",
+    "Static Structure":"Describe the elements or components, their relationships and their interfaces.",
+    "Dynamic Behavior & Interactions":"Describe how elements behave and interact across relevant operating modes, including timing where relevant.",
+    "Interfaces":"Define the external and internal interfaces of the architecture.",
+    "Design Rationale & Special Characteristics":"Document the rationale for key design decisions and flag any special characteristics, e.g. safety- or security-relevant elements.",
+    "Detailed Design Specification":"Specify the static and dynamic aspects of each unit or component down to implementation level.",
+    "Unit / Component Breakdown":"List each unit or component covered by this design, with its identifier and parent element.",
+    "Construction & Build Notes":"Record build or construction instructions, tooling used, and any deviations from the detailed design.",
+    "Standards Applied":"List the coding, design or manufacturing standards applied, e.g. MISRA, IPC, or internal design rules.",
+    "Static Analysis / Review Summary":"Summarize static analysis, design or code review findings and their disposition.",
+    "Verification Strategy":"Describe the overall approach used to verify this element, including techniques and independence considerations.",
+    "Verification Measures & Techniques":"List each verification measure — test, review, analysis or simulation — with its technique.",
+    "Entry & Exit Criteria":"Define the conditions that must be met before verification starts and before it can be declared complete.",
+    "Test Environment & Infrastructure":"Describe the test bench, rig, simulation or tooling used to execute the verification measures.",
+    "Results Summary & Pass/Fail Status":"Summarize verification results, including pass/fail status and links to detailed records.",
+    "Scope & Objectives":"State the project's objectives, boundaries and success criteria.",
+    "Work Breakdown & Schedule":"Provide the work breakdown structure and the schedule or milestones.",
+    "Resourcing & Roles":"Define roles, responsibilities and resource allocation across the project.",
+    "Stakeholder Communication":"Define who needs which information, how often, and through which channel.",
+    "Lifecycle Model":"State the project lifecycle model selected and any tailoring applied.",
+    "Risk Identification":"List identified risks together with their source or trigger.",
+    "Risk Assessment":"Rate each risk's probability and impact, and derive its priority.",
+    "Mitigation & Contingency Actions":"Define mitigation and contingency actions per risk, with owners and due dates.",
+    "Risk Register":"Maintain the consolidated, living record of all risks and their current status.",
+    "Information Needs":"Identify what the organization or project needs to know in order to manage effectively.",
+    "Metrics Defined":"Define the metrics and indicators used to satisfy the information needs.",
+    "Data Collection Method":"Describe how and when metric data is collected.",
+    "Reporting Cadence":"State how often, and to whom, measurement results are reported.",
+    "QA Plan":"Define the quality assurance activities planned across the project lifecycle.",
+    "Audit / Review Schedule":"List planned process and product audits or reviews and their timing.",
+    "Non-Conformances":"Record non-conformances raised, their severity and their resolution status.",
+    "Escalation Path":"Define how unresolved quality issues are escalated.",
+    "Verification Criteria":"Define the criteria used to confirm a work product satisfies its source requirements.",
+    "Independence":"State the level of independence required for the verification activity.",
+    "Verification Records":"Reference where verification evidence and records are stored.",
+    "Review Type & Participants":"State the type of joint review and who must participate.",
+    "Agenda":"List the agenda items covered in the review.",
+    "Action Items":"Record action items raised, their owners and due dates.",
+    "Sign-off":"Capture formal sign-off that the review's objectives were met.",
+    "Document Types & Templates":"List the document types produced by the project and their approved templates.",
+    "Naming & Storage Conventions":"Define file naming, folder structure and storage location conventions.",
+    "Retention & Access":"State retention periods and who has access to each document type.",
+    "Configuration Items":"List the items placed under configuration control.",
+    "Baseline Strategy":"Define when and how baselines are established.",
+    "Branching / Versioning Scheme":"Describe the versioning or branching scheme used.",
+    "Status Accounting":"Describe how the status of configuration items is tracked and reported.",
+    "Problem Categories":"Define the categories used to classify problems.",
+    "Severity & Priority Scheme":"Define the severity and priority levels and how they are assigned.",
+    "Resolution Workflow":"Describe the workflow from problem identification through closure.",
+    "Root Cause Analysis":"Describe the method used to identify root causes of recurring problems.",
+    "Change Categories":"Define the categories of change, e.g. requirement, design, or code.",
+    "Impact Analysis":"Describe how the impact of a proposed change is assessed.",
+    "CCB Approval":"Define the change control board's composition and approval authority.",
+    "Implementation Tracking":"Describe how approved changes are tracked through to implementation and verification.",
+    "Reusable Asset Inventory":"List candidate and qualified reusable work products.",
+    "Qualification Criteria":"Define the criteria a work product must meet to be qualified for reuse.",
+    "Reuse Strategy per Project":"Describe how reusable assets are selected and adapted for a specific project.",
+    "Improvement Goals":"State the process improvement goals and how they align with business objectives.",
+    "Baseline Assessment":"Reference the current process capability baseline, e.g. from a prior assessment.",
+    "Improvement Actions":"List planned improvement actions, their owners and timelines.",
+    "Effectiveness Review":"Describe how the effectiveness of improvement actions will be evaluated.",
+    "Parties & Scope of Work":"Identify the contracting parties and the scope of work covered.",
+    "Deliverables & Milestones":"List contractual deliverables and their milestones.",
+    "Commercial Terms":"State pricing, payment terms and commercial conditions.",
+    "Acceptance Criteria":"Define the criteria used to accept contractual deliverables.",
+    "Joint Activities & Interfaces":"Define the joint activities, interfaces and information to be exchanged with the supplier.",
+    "Progress Tracking":"Describe how supplier progress, quality and cost are tracked.",
+    "Communication Log":"Reference where communication and meeting records are kept.",
+    "Corrective Actions":"Record corrective actions raised against the supplier and their status.",
+    "Legal Obligations":"List applicable legal and regulatory obligations.",
+    "IP & Confidentiality":"State intellectual property and confidentiality terms.",
+    "Solicitation Scope":"Define the scope of work being solicited from candidate suppliers.",
+    "Evaluation Criteria":"Define the criteria used to evaluate supplier proposals.",
+    "Submission Requirements":"State the format, content and deadline for proposal submission.",
+    "Qualification Assessment Results":"Record the results of the supplier qualification assessment.",
+    "Approved Supplier Status":"State the supplier's status on the approved supplier list.",
+    "Proposal Scope":"Describe the scope of the tender response.",
+    "Compliance Matrix":"Provide a matrix showing compliance with each requirement in the request for proposals.",
+    "Technical Approach":"Describe the proposed technical approach.",
+    "Commercial Offer":"State the commercial offer, pricing and terms.",
+    "Release Content":"Define the functional and technical content included in this release.",
+    "Release Package Contents":"List the items included in the release package.",
+    "Release Criteria & Approval":"State the criteria that must be met, and who approves, before release.",
+    "Release Notes":"Summarize the key characteristics, known issues and support details of the release.",
+    "Delivery Confirmation":"Record confirmation that the release package was delivered to the intended customer.",
+  };
+
+  const REQS  = ["Functional Requirements","Non-Functional Requirements","Interface Requirements","Constraints & Assumptions","Traceability to Source Requirements"];
+  const ARCH  = ["Architectural Overview","Static Structure","Dynamic Behavior & Interactions","Interfaces","Design Rationale & Special Characteristics"];
+  const DETAIL= ["Detailed Design Specification","Unit / Component Breakdown","Construction & Build Notes","Standards Applied","Static Analysis / Review Summary"];
+  const VERIFY= ["Verification Strategy","Verification Measures & Techniques","Entry & Exit Criteria","Test Environment & Infrastructure","Results Summary & Pass/Fail Status"];
+
+  // code -> { title, process, purpose, sections[], upstream[] (optional) }
+  const WP_DOCS = {
+    "ACQ.3": { title:"Contract Agreement", process:"ACQ.3 — Acquisition", purpose:"To formally document the agreed scope, deliverables, commercial terms and acceptance criteria between the acquiring organization and the supplier.", sections:["Parties & Scope of Work","Deliverables & Milestones","Commercial Terms","Acceptance Criteria"] },
+    "ACQ.4": { title:"Supplier Monitoring Report", process:"ACQ.4 — Supplier Monitoring", purpose:"To track and evaluate a contracted supplier's performance against the agreed commitments, keeping both parties aligned throughout the project.", sections:["Joint Activities & Interfaces","Progress Tracking","Communication Log","Corrective Actions"] },
+    "ACQ.11": { title:"Technical Requirements Specification (Acquirer)", process:"ACQ.11 — Acquisition", purpose:"To capture the technical requirements the acquirer places on the supplier's product or service, forming the basis for the supplier's own requirements analysis.", sections:REQS },
+    "ACQ.12": { title:"Legal & Administrative Requirements", process:"ACQ.12 — Acquisition", purpose:"To record the legal, regulatory and administrative obligations that apply to the acquisition, including intellectual property, confidentiality and statutory requirements.", sections:["Legal Obligations","IP & Confidentiality","Constraints & Assumptions"] },
+    "ACQ.13": { title:"Project Requirements (Acquirer)", process:"ACQ.13 — Acquisition", purpose:"To specify the project-level constraints the acquirer expects the supplier to meet, such as milestones, reporting cadence and escalation paths.", sections:["Scope & Objectives","Work Breakdown & Schedule","Stakeholder Communication"] },
+    "ACQ.14": { title:"Request for Proposals (RFP)", process:"ACQ.14 — Acquisition", purpose:"To solicit competitive proposals from candidate suppliers by communicating the scope of work, evaluation criteria and submission requirements.", sections:["Solicitation Scope","Evaluation Criteria","Submission Requirements"] },
+    "ACQ.15": { title:"Supplier Qualification Record", process:"ACQ.15 — Acquisition", purpose:"To record the criteria and results used to assess whether a candidate supplier is capable of delivering the required product or service.", sections:["Qualification Criteria","Qualification Assessment Results","Approved Supplier Status"] },
+    "SPL.1": { title:"Tender Response", process:"SPL.1 — Supplier Tendering", purpose:"To document the technical and commercial response submitted in reply to an acquirer's request for proposals.", sections:["Proposal Scope","Compliance Matrix","Technical Approach","Commercial Offer"] },
+    "SPL.2": { title:"Product Release Note", process:"SPL.2 — Product Release", purpose:"To control and evidence the release of a product to its intended customer, ensuring the release content, criteria and approval are defined before delivery.", sections:["Release Content","Release Package Contents","Release Criteria & Approval","Release Notes","Delivery Confirmation"] },
+    "MAN.3": { title:"Project Management Plan", process:"MAN.3 — Project Management", purpose:"To define, plan, monitor and steer the project so that its objectives are achieved within the agreed scope, schedule, budget and quality constraints.", sections:["Scope & Objectives","Work Breakdown & Schedule","Resourcing & Roles","Stakeholder Communication","Lifecycle Model"] },
+    "MAN.5": { title:"Risk Management Plan & Register", process:"MAN.5 — Risk Management", purpose:"To identify, analyze, treat and monitor risks that could affect the project's objectives throughout its lifecycle.", sections:["Risk Identification","Risk Assessment","Mitigation & Contingency Actions","Risk Register"] },
+    "MAN.6": { title:"Measurement Plan & Report", process:"MAN.6 — Measurement", purpose:"To identify information needs, define and collect metrics, and use the resulting data to support project and organizational decision-making.", sections:["Information Needs","Metrics Defined","Data Collection Method","Reporting Cadence"] },
+    "REU.2": { title:"Reuse Program Plan", process:"REU.2 — Management of Products for Reuse", purpose:"To systematically manage reusable work products across the organization's product portfolio, from qualification through deployment on new projects.", sections:["Reusable Asset Inventory","Qualification Criteria","Reuse Strategy per Project"] },
+    "PIM.3": { title:"Process Improvement Plan", process:"PIM.3 — Process Improvement", purpose:"To assess and improve the organization's processes based on defined improvement goals and objective performance data.", sections:["Improvement Goals","Baseline Assessment","Improvement Actions","Effectiveness Review"] },
+
+    "SYS.1": { title:"Stakeholder Requirements Specification", process:"SYS.1 — Requirements Elicitation", purpose:"To gather, analyze and agree stakeholder needs and requirements throughout the product lifecycle, keeping their status transparent to all affected parties.", sections:["Functional Requirements","Non-Functional Requirements","Constraints & Assumptions","Traceability to Source Requirements"] },
+    "SYS.2": { title:"System Requirements Specification", process:"SYS.2 — System Requirements Analysis", purpose:"To transform stakeholder requirements into a structured, analyzed and traceable set of system requirements.", sections:REQS, upstream:["SYS.1"] },
+    "SYS.3": { title:"System Architecture Design Document", process:"SYS.3 — System Architectural Design", purpose:"To define and analyze a system architecture — covering structure and behavior — that is consistent with, and traceable to, the system requirements.", sections:ARCH, upstream:["SYS.2"] },
+    "SYS.4": { title:"System Integration & Integration Verification Report", process:"SYS.4 — System Integration and Integration Verification", purpose:"To integrate the system's elements and verify that the integrated system is consistent with the system architecture.", sections:VERIFY, upstream:["SYS.3"] },
+    "SYS.5": { title:"System Verification Report", process:"SYS.5 — System Verification", purpose:"To verify that the fully integrated system is consistent with, and satisfies, the system requirements.", sections:VERIFY, upstream:["SYS.2"] },
+
+    "MEC.1": { title:"Mechanical Requirements Specification", process:"MEC.1 — Mechanical Requirements Analysis", purpose:"To establish a structured, analyzed set of mechanical requirements consistent with the system requirements and system architecture.", sections:REQS, upstream:["SYS.2"] },
+    "MEC.2": { title:"Mechanical Design Document", process:"MEC.2 — Mechanical Design", purpose:"To define and analyze the mechanical architecture and design, consistent with the mechanical requirements.", sections:ARCH, upstream:["MEC.1"] },
+    "MEC.3": { title:"Mechanical Detailed Design & Build Record", process:"MEC.3 — Detailed Design & Build", purpose:"To produce a detailed mechanical design and build the corresponding parts and assemblies consistent with that design.", sections:DETAIL, upstream:["MEC.2"] },
+    "MEC.4": { title:"Mechanical Unit Verification Report", process:"MEC.4 — Unit Verification", purpose:"To verify that manufactured mechanical parts and assemblies are consistent with the mechanical detailed design.", sections:VERIFY, upstream:["MEC.3"] },
+
+    "ELE.1": { title:"Electrical Requirements Specification", process:"ELE.1 — Electrical Requirements Analysis", purpose:"To establish a structured, analyzed set of electrical and electronic requirements consistent with the system requirements and system architecture.", sections:REQS, upstream:["SYS.2"] },
+    "ELE.2": { title:"Electrical Design Document", process:"ELE.2 — Electrical Design", purpose:"To define and analyze the electrical and electronic architecture and design, consistent with the electrical requirements.", sections:ARCH, upstream:["ELE.1"] },
+    "ELE.3": { title:"Electrical Detailed Design & Build Record", process:"ELE.3 — Detailed Design & Build", purpose:"To produce a detailed electrical design and build the corresponding circuits and boards consistent with that design.", sections:DETAIL, upstream:["ELE.2"] },
+    "ELE.4": { title:"Electrical Unit Verification Report", process:"ELE.4 — Unit Verification", purpose:"To verify that built electrical and electronic units are consistent with the electrical detailed design.", sections:VERIFY, upstream:["ELE.3"] },
+
+    "SWE.1": { title:"Software Requirements Specification", process:"SWE.1 — Software Requirements Analysis", purpose:"To establish a structured, analyzed set of software requirements consistent with the system requirements and system architecture.", sections:REQS, upstream:["SYS.2","SYS.3"] },
+    "SWE.2": { title:"Software Architecture Design Document", process:"SWE.2 — Software Architectural Design", purpose:"To define and analyze a software architecture — static and dynamic aspects — consistent with the software requirements.", sections:ARCH, upstream:["SWE.1"] },
+    "SWE.3": { title:"Software Detailed Design Document", process:"SWE.3 — Software Detailed Design and Unit Construction", purpose:"To establish the software detailed design and construct software units consistent with that design.", sections:DETAIL, upstream:["SWE.2"] },
+    "SWE.4": { title:"Software Unit Verification Report", process:"SWE.4 — Software Unit Verification", purpose:"To verify that constructed software units are consistent with the software detailed design.", sections:VERIFY, upstream:["SWE.3"] },
+
+    "CYB.1": { title:"Cybersecurity Requirements Specification", process:"CYB.1 — Security Requirements Analysis", purpose:"To establish a structured, analyzed set of cybersecurity requirements consistent with the system requirements and identified threat scenarios.", sections:REQS, upstream:["SYS.2"] },
+    "CYB.2": { title:"Security Design Document", process:"CYB.2 — Security Design", purpose:"To define and analyze a security architecture and design that mitigates identified cybersecurity risks, consistent with the security requirements.", sections:ARCH, upstream:["CYB.1"] },
+    "CYB.3": { title:"Security Detailed Design & Implementation Record", process:"CYB.3 — Detailed Design & Build", purpose:"To produce a detailed security design and implement the corresponding security controls consistent with that design.", sections:DETAIL, upstream:["CYB.2"] },
+    "CYB.4": { title:"Security Verification Report", process:"CYB.4 — Security Verification", purpose:"To verify that implemented security controls are consistent with, and satisfy, the security requirements and design.", sections:VERIFY, upstream:["CYB.3"] },
+
+    "SUP.1": { title:"Quality Assurance Plan", process:"SUP.1 — Quality Assurance", purpose:"To provide independent, objective assurance that work products and processes comply with defined standards, plans and procedures.", sections:["QA Plan","Audit / Review Schedule","Non-Conformances","Escalation Path"] },
+    "SUP.2": { title:"Verification Report", process:"SUP.2 — Verification", purpose:"To confirm that a work product properly reflects the specified requirements from which it was derived.", sections:["Verification Criteria","Independence","Verification Records"] },
+    "SUP.4": { title:"Joint Review Record", process:"SUP.4 — Joint Review", purpose:"To maintain a common understanding with stakeholders of a work product's progress and status against the project's objectives.", sections:["Review Type & Participants","Agenda","Action Items","Sign-off"] },
+    "SUP.7": { title:"Documentation Plan", process:"SUP.7 — Documentation", purpose:"To develop and maintain the recorded information produced throughout the project in a controlled, accessible manner.", sections:["Document Types & Templates","Naming & Storage Conventions","Retention & Access"] },
+    "SUP.8": { title:"Configuration Management Plan", process:"SUP.8 — Configuration Management", purpose:"To establish and maintain the integrity of all work products through identification, control, status accounting and release of configuration items.", sections:["Configuration Items","Baseline Strategy","Branching / Versioning Scheme","Status Accounting"] },
+    "SUP.9": { title:"Problem Resolution Record", process:"SUP.9 — Problem Resolution Management", purpose:"To ensure problems identified in work products or processes are recorded, analyzed and resolved in a controlled and timely manner.", sections:["Problem Categories","Severity & Priority Scheme","Resolution Workflow","Root Cause Analysis"] },
+    "SUP.10": { title:"Change Request Record", process:"SUP.10 — Change Request Management", purpose:"To ensure changes to work products are recorded, evaluated for impact, and controlled through approval prior to implementation.", sections:["Change Categories","Impact Analysis","CCB Approval","Implementation Tracking"] },
+  };
+
+  function docControlRow(k, v){ return `<tr><td class="k">${k}</td><td>${v}</td></tr>`; }
+
+  function buildDocBody(code, boxTitle, status){
+    const doc = WP_DOCS[code] || {
+      title: boxTitle || code, process: `${code}`,
+      purpose: "This work product satisfies the outcomes of its associated Automotive SPICE® process and shall be tailored to the project's specific needs.",
+      sections: ["Functional Requirements","Non-Functional Requirements","Constraints & Assumptions"],
+    };
+    const statusLabel = status ? STATUS_LABEL[status] : "Not set";
+
+    const refs = [
+      `Automotive SPICE® v4.1 — Process Reference Model, process ${doc.process}`,
+      code === "MAN.3" ? "Project Charter / Statement of Work" : "Project Management Plan (MAN.3)",
+      "Configuration Management Plan (SUP.8)",
+    ];
+    if(doc.upstream && doc.upstream.length){
+      const names = doc.upstream.map(c => `${c}${WP_DOCS[c] ? " — " + WP_DOCS[c].title : ""}`).join("; ");
+      refs.splice(1, 0, `Consistent and bidirectionally traceable to: ${names}`);
+    }
+
+    const sectionsHtml = doc.sections.map((name, i) => `
+      <div class="doc-subsection">
+        <h4>4.${i+1} ${name}</h4>
+        <p class="placeholder">${GUIDE[name] || "Describe the relevant content for this sub-section here."}</p>
+      </div>`).join("");
+
+    return `
+      <div class="doc-titleblock">
+        <div class="doc-kicker">Controlled Document</div>
+        <h2>${doc.title}</h2>
+        <div class="doc-process-ref">Automotive SPICE® Process Reference: ${doc.process}</div>
+      </div>
+
+      <table class="doc-control-table">
+        <tbody>
+          ${docControlRow("Project Name", "<strong>Project Name</strong>")}
+          ${docControlRow("Document ID", `${code}-DOC-001`)}
+          ${docControlRow("Version", "0.1")}
+          ${docControlRow("Status", statusLabel)}
+          ${docControlRow("Prepared by", "&nbsp;")}
+          ${docControlRow("Reviewed by", "&nbsp;")}
+          ${docControlRow("Approved by", "&nbsp;")}
+          ${docControlRow("Date", "&nbsp;")}
+        </tbody>
+      </table>
+
+      <div class="doc-section">
+        <h3>1. Purpose</h3>
+        <p>${doc.purpose}</p>
+      </div>
+
+      <div class="doc-section">
+        <h3>2. Scope</h3>
+        <p>This document applies to <strong>Project Name</strong> and defines the ${doc.title.toLowerCase()} required to satisfy process ${doc.process} within the Automotive SPICE® v4.1 framework, for the release scope currently agreed for the project.</p>
+      </div>
+
+      <div class="doc-section">
+        <h3>3. References</h3>
+        <ul class="doc-refs">
+          ${refs.map(r => `<li>${r}</li>`).join("")}
+        </ul>
+      </div>
+
+      <div class="doc-section">
+        <h3>4. Content</h3>
+        ${sectionsHtml}
+      </div>
+
+      <div class="doc-section">
+        <h3>5. Traceability</h3>
+        <p>Every item in this document shall carry bidirectional traceability to its source (see References) and to its downstream verification or design element, so that coverage and consistency can be demonstrated at any Automotive SPICE® capability level.</p>
+      </div>
+
+      <div class="doc-section">
+        <h3>6. Review &amp; Approval</h3>
+        <table class="doc-sign-table">
+          <thead><tr><th>Role</th><th>Name</th><th>Signature</th><th>Date</th></tr></thead>
+          <tbody>
+            <tr><td>Author</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>Reviewer</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>Approver</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="doc-section">
+        <h3>7. Revision History</h3>
+        <table class="doc-sign-table">
+          <thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Description of Change</th></tr></thead>
+          <tbody>
+            <tr><td>0.1</td><td>&nbsp;</td><td>&nbsp;</td><td>Initial draft created for Project Name</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="doc-footer-note">Generated by OneRoofTraceability as a generic starting template aligned with Automotive SPICE® v4.1 (VDA QMC). Tailor all sections to the project's actual scope, standards and contractual requirements before use.</p>
+    `;
+  }
+
+  function openDocModal(code, boxTitle, status){
+    const overlay = document.getElementById("docModalOverlay");
+    const body = document.getElementById("docModalBody");
+    const barTitle = document.getElementById("docModalBarTitle");
+    if(!overlay || !body) return;
+    const doc = WP_DOCS[code];
+    barTitle.textContent = `${code} — ${doc ? doc.title : (boxTitle || "Document Template")}`;
+    body.innerHTML = buildDocBody(code, boxTitle, status);
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeDocModal(){
+    const overlay = document.getElementById("docModalOverlay");
+    if(!overlay) return;
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  const docOverlayEl = document.getElementById("docModalOverlay");
+  if(docOverlayEl){
+    docOverlayEl.addEventListener("click", (e) => { if(e.target === docOverlayEl) closeDocModal(); });
+  }
+  const docCloseBtn = document.getElementById("docModalCloseBtn");
+  if(docCloseBtn) docCloseBtn.addEventListener("click", closeDocModal);
+  const docPrintBtn = document.getElementById("docModalPrintBtn");
+  if(docPrintBtn) docPrintBtn.addEventListener("click", () => window.print());
+  document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeDocModal(); });
+
+  const vcycleMainEl = document.getElementById("vcycle-main");
+  if(vcycleMainEl){
+    vcycleMainEl.addEventListener("click", (e) => {
+      const box = e.target.closest(".wp-box");
+      if(!box) return;
+      e.preventDefault();
+      openDocModal(box.dataset.code, box.dataset.title, box.dataset.status || null);
+    });
+  }
+
+  // ---------------- Capability level ↔ V-Cycle maturity preview ----------------
+  function setLegendActive(status){
+    document.querySelectorAll(".legend-step").forEach(el => {
+      el.classList.toggle("active", !!status && el.dataset.status === status);
+    });
+  }
+
+  function currentLevelSelectValue(){
+    const sel = document.getElementById("aspiceLevelSelect");
+    return sel ? Number(sel.value) : 1;
+  }
+
+  function updateLevelBanner(){
+    const title = document.getElementById("vcycleLevelBannerTitle");
+    const desc = document.getElementById("vcycleLevelBannerDesc");
+    const btn = document.getElementById("vcycleShowActualBtn");
+    if(!title || !desc || !btn) return;
+    const level = currentLevelSelectValue();
+    const meta = LEVEL_META[level];
+    if(vcOverrideStatus){
+      title.textContent = `Showing target maturity for ${meta.label}`;
+      desc.textContent = `Every work product below is shown at the ${STATUS_LABEL[meta.status]} status required to satisfy this capability level. Pick a different level in the Automotive section above, or view this project's real status.`;
+      btn.textContent = "Show actual project status";
+    } else {
+      title.textContent = "Showing actual project status";
+      desc.textContent = "Each box below reflects its real, current status. Pick a capability level in the Automotive section above to preview what full maturity at that level looks like across the whole V-Cycle.";
+      btn.textContent = `Preview ${meta.label} target status`;
+    }
+  }
+
+  function applyLevelPreview(levelNum){
+    const meta = LEVEL_META[levelNum];
+    if(!meta) return;
+    vcOverrideStatus = meta.status;
+    renderVCycle("vcycle-main");
+    setLegendActive(meta.status);
+    updateLevelBanner();
+  }
+
+  function showActualStatus(){
+    vcOverrideStatus = null;
+    renderVCycle("vcycle-main");
+    setLegendActive(null);
+    updateLevelBanner();
+  }
+
+  const vcycleShowActualBtn = document.getElementById("vcycleShowActualBtn");
+  if(vcycleShowActualBtn){
+    vcycleShowActualBtn.addEventListener("click", () => {
+      if(vcOverrideStatus){ showActualStatus(); }
+      else { applyLevelPreview(currentLevelSelectValue()); }
+    });
+  }
+
+  // Selecting a capability level in the Automotive panel drives the V-Cycle preview live
+  const aspiceLevelSelectEl = document.getElementById("aspiceLevelSelect");
+  if(aspiceLevelSelectEl){
+    aspiceLevelSelectEl.addEventListener("change", (e) => {
+      if(vcOverrideStatus){
+        applyLevelPreview(Number(e.target.value));
+      } else {
+        updateLevelBanner();
+      }
+    });
+  }
+
+  // Initial render: Level 1 is selected by default, so the V-Cycle opens already showing
+  // Draft-only (light-blue) target maturity — dynamic and intuitive from first load.
+  applyLevelPreview(1);
 
   // ---------------- Industry dropdowns (scoped so each picker only touches its own panels) ----------------
   function wireIndustryPicker(selectEl, panelPrefix){
