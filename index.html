@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OneRoofTraceability — One Pager</title>
-<meta name="description" content="OneRoofTraceability brings every controlled document — engineering, HR, finance and accounting — under one auditable, version-controlled roof.">
+<title>Project Name</title>
+<meta name="description" content="OneTraceability brings every controlled document — engineering, HR, finance and accounting — under one auditable, version-controlled roof.">
 <style>
   :root{
     --navy:#0B2545;
@@ -45,14 +45,14 @@
   img,svg{ display:block; max-width:100%; }
   a{ color:inherit; }
   .container{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
-  section{ padding:76px 0; }
+  section{ padding:34px 0; }
   h1,h2,h3{ font-family:var(--font-head); color:var(--navy); margin:0 0 .5em; line-height:1.18; }
   h2{ font-size:1.9rem; }
   h3{ font-size:1.18rem; }
   p{ margin:0 0 1em; }
   .lede{ color:var(--mute); font-size:1.05rem; max-width:640px; }
   .eyebrow{ color:var(--orange); font-weight:700; font-size:.82rem; margin:0 0 .4em; }
-  .section-head{ max-width:680px; margin-bottom:2.4rem; }
+  .section-head{ max-width:680px; margin-bottom:1.3rem; }
   #intro .section-head, #vcycle .section-head{ max-width:none; }
   #intro .section-head .lede, #vcycle .section-head .lede{
     text-align:justify; text-align-last:left; max-width:var(--maxw);
@@ -120,7 +120,7 @@
   /* ---------- Hero ---------- */
   .hero{
     background:linear-gradient(135deg, var(--navy) 0%, var(--blue-med) 65%, var(--blue) 100%);
-    position:relative; overflow:hidden; color:#fff; padding:88px 0 96px;
+    position:relative; overflow:hidden; color:#fff; padding:48px 0 54px;
   }
   .hero::after{
     content:""; position:absolute; right:-120px; bottom:-160px; width:520px; height:520px;
@@ -189,6 +189,7 @@
   .vcycle-level-banner-text strong{ display:block; color:var(--navy); font-size:.94rem; margin-bottom:.2em; }
   .vcycle-level-banner-text p{ margin:0; font-size:.84rem; color:var(--blue-med); max-width:640px; }
   .btn-sm{ padding:.55em 1.1em; font-size:.82rem; white-space:nowrap; }
+  .vcycle-level-banner-actions{ display:flex; gap:10px; flex-wrap:wrap; }
   .vcycle-board{
     background:var(--pale); border:1px solid var(--line); border-radius:16px;
     padding:28px; overflow-x:auto;
@@ -256,7 +257,7 @@
   }
 
   /* ---------- Governance ---------- */
-  .gov-grid{ display:flex; flex-wrap:wrap; gap:20px; margin-bottom:3rem; }
+  .gov-grid{ display:flex; flex-wrap:wrap; gap:20px; margin-bottom:1.5rem; }
   .gov-card{
     flex:1 1 200px; background:#fff; border:1px solid var(--line); border-radius:12px;
     padding:22px 20px; box-shadow:0 2px 10px rgba(11,37,69,.05);
@@ -391,6 +392,8 @@
   .doc-subsection .placeholder{ font-family:var(--font-body); font-size:.85rem; color:var(--mute); margin:0; font-style:italic; border-left:3px solid var(--blue-light); padding-left:.7em; }
   .doc-refs{ font-family:var(--font-body); font-size:.85rem; padding-left:1.2em; margin:0; color:var(--text); }
   .doc-refs li{ margin-bottom:.35em; }
+  .doc-trace-link{ color:var(--blue-med); font-weight:700; text-decoration:underline; cursor:pointer; }
+  .doc-trace-link:hover{ color:var(--orange); }
   .doc-sign-table{ width:100%; border-collapse:collapse; font-family:var(--font-body); font-size:.82rem; }
   .doc-sign-table th, .doc-sign-table td{ border:1px solid var(--line); padding:.65em .75em; text-align:left; }
   .doc-sign-table th{ background:var(--pale); color:var(--navy); }
@@ -468,11 +471,12 @@
     <div class="container nav">
       <a class="logo" href="#top">
         <span class="logo-mark">ORT</span>
-        <span class="logo-word">OneRoofTraceability</span>
+        <span class="logo-word">OneTraceability</span>
       </a>
       <ul id="nav-links">
         <li><a href="#intro">Overview</a></li>
         <li><a href="#vcycle">V-Cycle</a></li>
+        <li><a href="#traceability">Traceability</a></li>
         <li><a href="#governance">Governance</a></li>
         <li><a href="#intro">Industries</a></li>
         <li><a href="#pricing">Pricing</a></li>
@@ -490,7 +494,7 @@
       <div class="container hero-grid">
         <div>
           <h1>Every document your teams create. One roof, start to finish.</h1>
-          <p class="lede">OneRoofTraceability maps your engineering, HR, finance and accounting documents onto a single lifecycle — who wrote it, who reviewed it, what version it's on, and where it stands right now. Built for teams who get audited and can't afford to lose a paper trail.</p>
+          <p class="lede">OneTraceability maps your engineering, HR, finance and accounting documents onto a single lifecycle — who wrote it, who reviewed it, what version it's on, and where it stands right now. Built for teams who get audited and can't afford to lose a paper trail.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#vcycle">Explore the V-Cycle</a>
             <a class="btn btn-ghost" href="#contact">Talk to us</a>
@@ -506,7 +510,7 @@
           </div>
         </div>
         <div class="hero-visual">
-          <div class="hero-visual-label">A document's life inside OneRoofTraceability</div>
+          <div class="hero-visual-label">A document's life inside OneTraceability</div>
           <div class="status-flow">
             <div class="status-chip"><span class="dot" style="background:var(--status-draft)"></span> Draft <span class="arrow">↓</span></div>
             <div class="status-chip"><span class="dot" style="background:var(--status-inwork)"></span> In Work <span class="arrow">↓</span></div>
@@ -521,7 +525,7 @@
       <div class="container">
         <div class="section-head">
           <h2>Documentation shouldn't live in five places at once</h2>
-          <p class="lede">Requirements in one drive, drawings in an inbox, sign-offs in someone's memory. OneRoofTraceability gives every work product a fixed address, a visible history, and a status anyone can check — so when an auditor, a new hire, or your own team needs a document, there's exactly one place to look.</p>
+          <p class="lede">Requirements in one drive, drawings in an inbox, sign-offs in someone's memory. OneTraceability gives every work product a fixed address, a visible history, and a status anyone can check — so when an auditor, a new hire, or your own team needs a document, there's exactly one place to look.</p>
         </div>
 
         <div class="industry-panel active" id="intro-panel-automotive">
@@ -568,7 +572,7 @@
       <div class="container">
         <div class="section-head">
           <h2>Built for scrutiny, not just storage</h2>
-          <p class="lede">Five things happen automatically to every document that enters OneRoofTraceability — none of them need a spreadsheet on the side.</p>
+          <p class="lede">Five things happen automatically to every document that enters OneTraceability — none of them need a spreadsheet on the side.</p>
         </div>
 
         <div class="gov-grid">
@@ -624,7 +628,7 @@
           <div class="aspice-levels">
             <div class="aspice-levels-head">
               <h3>Automotive SPICE® capability levels required</h3>
-              <p class="aspice-levels-lede">Every process box in the V-Cycle below (SYS, SWE, HWE, SUP, MAN and more) can be assessed against six capability levels, as defined in the Automotive SPICE® v4.1 Process Assessment Model (VDA QMC). Levels 2–5 are cumulative — each one requires the level below it to be fully achieved. Pick a level to see what it expects and how that maps to a document's status in OneRoofTraceability.</p>
+              <p class="aspice-levels-lede">Every process box in the V-Cycle below (SYS, SWE, HWE, SUP, MAN and more) can be assessed against six capability levels, as defined in the Automotive SPICE® v4.1 Process Assessment Model (VDA QMC). Levels 2–5 are cumulative — each one requires the level below it to be fully achieved. Pick a level to see what it expects and how that maps to a document's status in OneTraceability.</p>
               <div class="aspice-level-picker">
                 <label for="aspiceLevelSelect">Capability level</label>
                 <select id="aspiceLevelSelect">
@@ -766,10 +770,151 @@
             <strong id="vcycleLevelBannerTitle">Showing target maturity for Level 1 — Performed</strong>
             <p id="vcycleLevelBannerDesc">Every work product below is shown at the Draft status required to satisfy this capability level. Pick a different level in the Automotive section above, or view this project's real status.</p>
           </div>
-          <button class="btn btn-gradient-blue btn-sm" id="vcycleShowActualBtn" type="button">Show actual project status</button>
+          <div class="vcycle-level-banner-actions">
+            <button class="btn btn-gradient-blue btn-sm" id="vcycleShowActualBtn" type="button">Show actual project status</button>
+            <button class="btn btn-primary btn-sm" id="sendStatusBtn" type="button">Send Status to Manager</button>
+          </div>
         </div>
         <div class="vcycle-board">
           <div class="vc-cols" id="vcycle-main"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="traceability" class="section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Traceability</h2>
+          <p class="lede">The diagram below shows every controlled document in the order it is produced (1 to n), with solid arrows showing what each document is directly derived from, and dashed arrows showing how every document is captured by the project's Traceability Matrix. Open <strong>TRC.1 — Traceability Matrix</strong> in the V-Cycle above to see this as a controlled document in its own right.</p>
+        </div>
+
+        <div class="vcycle-board" style="overflow-x:auto;">
+          <svg viewBox="0 0 1180 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Traceability diagram showing the order of documents and their dependencies" style="width:100%; min-width:900px;">
+            <defs>
+              <marker id="arrowSolid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="var(--blue-med)"/>
+              </marker>
+              <marker id="arrowDashed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="var(--orange)"/>
+              </marker>
+            </defs>
+
+            <!-- Solid sequence arrows: 1→2→3→4→5→6→7→8→9 -->
+            <g stroke="var(--blue-med)" stroke-width="2" marker-end="url(#arrowSolid)">
+              <line x1="128" y1="62" x2="140" y2="62"/>
+              <line x1="258" y1="62" x2="270" y2="62"/>
+              <line x1="388" y1="62" x2="400" y2="62"/>
+              <line x1="518" y1="62" x2="530" y2="62"/>
+              <line x1="648" y1="62" x2="660" y2="62"/>
+              <line x1="778" y1="62" x2="790" y2="62"/>
+              <line x1="908" y1="62" x2="920" y2="62"/>
+              <line x1="1038" y1="62" x2="1050" y2="62"/>
+            </g>
+
+            <!-- Dashed traceability arrows: every stage 1–9 is traced by TRC.1 -->
+            <g stroke="var(--orange)" stroke-width="1.4" stroke-dasharray="4 4" opacity=".55" marker-end="url(#arrowDashed)" fill="none">
+              <path d="M70,94 C70,160 300,190 470,225"/>
+              <path d="M200,94 C200,160 350,190 470,222"/>
+              <path d="M330,94 C330,150 420,185 475,215"/>
+              <path d="M460,94 C460,140 480,175 500,208"/>
+              <path d="M590,94 L590,206"/>
+              <path d="M720,94 C720,140 700,175 680,208"/>
+              <path d="M850,94 C850,150 750,185 705,215"/>
+              <path d="M980,94 C980,160 820,190 710,222"/>
+              <path d="M1110,94 C1110,160 850,190 710,225"/>
+            </g>
+
+            <!-- Boxes 1-9: main document sequence -->
+            <g font-family="Calibri, Arial, sans-serif">
+              <!-- 1 -->
+              <rect x="12" y="30" width="116" height="64" rx="8" fill="var(--blue-med)"/>
+              <circle cx="24" cy="30" r="11" fill="var(--navy)"/><text x="24" y="34" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">1</text>
+              <text x="70" y="58" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">SYS.1</text>
+              <text x="70" y="72" text-anchor="middle" fill="#fff" font-size="8.5">Stakeholder</text>
+              <text x="70" y="83" text-anchor="middle" fill="#fff" font-size="8.5">Requirements</text>
+
+              <!-- 2 -->
+              <rect x="142" y="30" width="116" height="64" rx="8" fill="var(--blue-med)"/>
+              <circle cx="154" cy="30" r="11" fill="var(--navy)"/><text x="154" y="34" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">2</text>
+              <text x="200" y="58" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">SYS.2</text>
+              <text x="200" y="72" text-anchor="middle" fill="#fff" font-size="8.5">System</text>
+              <text x="200" y="83" text-anchor="middle" fill="#fff" font-size="8.5">Requirements</text>
+
+              <!-- 3 -->
+              <rect x="272" y="30" width="116" height="64" rx="8" fill="var(--blue-med)"/>
+              <circle cx="284" cy="30" r="11" fill="var(--navy)"/><text x="284" y="34" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">3</text>
+              <text x="330" y="58" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">SYS.3</text>
+              <text x="330" y="72" text-anchor="middle" fill="#fff" font-size="8.5">System</text>
+              <text x="330" y="83" text-anchor="middle" fill="#fff" font-size="8.5">Architecture</text>
+
+              <!-- 4 -->
+              <rect x="402" y="30" width="116" height="64" rx="8" fill="var(--blue)"/>
+              <circle cx="414" cy="30" r="11" fill="var(--navy)"/><text x="414" y="34" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">4</text>
+              <text x="460" y="58" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="700">MEC/ELE/SWE/CYB.1</text>
+              <text x="460" y="72" text-anchor="middle" fill="#fff" font-size="8.5">Discipline</text>
+              <text x="460" y="83" text-anchor="middle" fill="#fff" font-size="8.5">Requirements</text>
+
+              <!-- 5 -->
+              <rect x="532" y="30" width="116" height="64" rx="8" fill="var(--blue)"/>
+              <circle cx="544" cy="30" r="11" fill="var(--navy)"/><text x="544" y="34" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">5</text>
+              <text x="590" y="58" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="700">MEC/ELE/SWE/CYB.2</text>
+              <text x="590" y="72" text-anchor="middle" fill="#fff" font-size="8.5">Discipline</text>
+              <text x="590" y="83" text-anchor="middle" fill="#fff" font-size="8.5">Design</text>
+
+              <!-- 6 -->
+              <rect x="662" y="30" width="116" height="64" rx="8" fill="var(--blue)"/>
+              <circle cx="674" cy="30" r="11" fill="var(--navy)"/><text x="674" y="34" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">6</text>
+              <text x="720" y="58" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="700">MEC/ELE/SWE/CYB.3</text>
+              <text x="720" y="72" text-anchor="middle" fill="#fff" font-size="8.5">Detailed Design</text>
+              <text x="720" y="83" text-anchor="middle" fill="#fff" font-size="8.5">&amp; Build</text>
+
+              <!-- 7 -->
+              <rect x="792" y="30" width="116" height="64" rx="8" fill="var(--blue)"/>
+              <circle cx="804" cy="30" r="11" fill="var(--navy)"/><text x="804" y="34" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">7</text>
+              <text x="850" y="58" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="700">MEC/ELE/SWE/CYB.4</text>
+              <text x="850" y="72" text-anchor="middle" fill="#fff" font-size="8.5">Unit</text>
+              <text x="850" y="83" text-anchor="middle" fill="#fff" font-size="8.5">Verification</text>
+
+              <!-- 8 -->
+              <rect x="922" y="30" width="116" height="64" rx="8" fill="var(--orange)"/>
+              <circle cx="934" cy="30" r="11" fill="var(--navy)"/><text x="934" y="34" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">8</text>
+              <text x="980" y="58" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">SYS.4</text>
+              <text x="980" y="72" text-anchor="middle" fill="#fff" font-size="8.5">System Integration</text>
+              <text x="980" y="83" text-anchor="middle" fill="#fff" font-size="8.5">&amp; Test</text>
+
+              <!-- 9 -->
+              <rect x="1052" y="30" width="116" height="64" rx="8" fill="var(--orange)"/>
+              <circle cx="1064" cy="30" r="11" fill="var(--navy)"/><text x="1064" y="34" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">9</text>
+              <text x="1110" y="58" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">SYS.5</text>
+              <text x="1110" y="72" text-anchor="middle" fill="#fff" font-size="8.5">System Qualification</text>
+              <text x="1110" y="83" text-anchor="middle" fill="#fff" font-size="8.5">Test</text>
+
+              <!-- 10: Traceability Matrix -->
+              <rect x="460" y="210" width="260" height="66" rx="10" fill="var(--navy)" stroke="var(--orange-light)" stroke-width="1.5"/>
+              <circle cx="474" cy="210" r="12" fill="var(--orange)"/><text x="474" y="214" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">10</text>
+              <text x="590" y="240" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">TRC.1 — Traceability Matrix</text>
+              <text x="590" y="256" text-anchor="middle" fill="#CFE0F5" font-size="8.5">Aggregates &amp; cross-references documents 1–9</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="status-legend" style="margin-top:1.4rem;">
+          <div class="status-item">
+            <span class="step-order">1–10</span>
+            <span><strong>Document order</strong><span class="desc">The numbered badge on each box is that document's position in the project's overall sequence, from first produced (1) to last (n).</span></span>
+          </div>
+          <div class="status-item">
+            <span class="legend-swatch" style="background:var(--blue-med); border-radius:3px; margin-top:5px; width:22px; height:10px;"></span>
+            <span><strong>Solid arrow</strong><span class="desc">A direct dependency: the document it points to cannot start until the document it comes from is available.</span></span>
+          </div>
+          <div class="status-item">
+            <span class="legend-swatch" style="background:var(--orange); border-radius:3px; margin-top:5px; width:22px; height:10px; opacity:.6;"></span>
+            <span><strong>Dashed arrow</strong><span class="desc">A traceability link: this document's requirements, design or test items are indexed in the Traceability Matrix (TRC.1) for audit.</span></span>
+          </div>
+          <div class="status-item">
+            <span class="legend-swatch" style="background:var(--navy); border-radius:50%; margin-top:5px;"></span>
+            <span><strong>Traceability Matrix</strong><span class="desc">The single document (box 10) that maps every other document's upstream source and downstream consumer. Open it from the V-Cycle to view or download it.</span></span>
+          </div>
         </div>
       </div>
     </section>
@@ -791,7 +936,7 @@
               <li>Draft / In Work / Under Review / Final status</li>
               <li>Community support</li>
             </ul>
-            <a class="btn btn-outline" href="mailto:jobcarmen@yahoo.com?subject=OneRoofTraceability%20%E2%80%94%20Free%20plan">Start for free</a>
+            <a class="btn btn-outline" href="mailto:jobcarmen@yahoo.com?subject=OneTraceability%20%E2%80%94%20Free%20plan">Start for free</a>
           </div>
           <div class="price-card highlight">
             <h3>Pay per use</h3>
@@ -803,7 +948,7 @@
               <li>Automated workflow &amp; approval gates</li>
               <li>Scales up or down with your document count, automatically</li>
             </ul>
-            <a class="btn btn-primary" href="mailto:jobcarmen@yahoo.com?subject=OneRoofTraceability%20%E2%80%94%20Pay-per-use%20rate%20request">Get a rate for your volume</a>
+            <a class="btn btn-primary" href="mailto:jobcarmen@yahoo.com?subject=OneTraceability%20%E2%80%94%20Pay-per-use%20rate%20request">Get a rate for your volume</a>
           </div>
         </div>
       </div>
@@ -824,7 +969,7 @@
 
   <footer>
     <div class="container">
-      <span>OneRoofTraceability — Generic Industry Configuration, Document Control v1.0</span>
+      <span>OneTraceability — Generic Industry Configuration, Document Control v1.0</span>
       <span><a href="mailto:jobcarmen@yahoo.com">jobcarmen@yahoo.com</a></span>
     </div>
   </footer>
@@ -834,6 +979,7 @@
       <div class="doc-modal-bar">
         <span class="doc-modal-bar-title" id="docModalBarTitle">Document Template</span>
         <div class="doc-modal-actions">
+          <button type="button" id="docModalWordBtn">Download Word</button>
           <button type="button" id="docModalPrintBtn">Print</button>
           <button type="button" id="docModalCloseBtn">Close ✕</button>
         </div>
@@ -887,7 +1033,7 @@
     sup: { cls:"med", items: [
       ["SUP.1","Quality Assurance"], ["SUP.2","Verification"], ["SUP.4","Joint Review"],
       ["SUP.7","Documentation"], ["SUP.8","Configuration Mgmt."], ["SUP.9","Problem Resolution"],
-      ["SUP.10","Change Request Mgmt."],
+      ["SUP.10","Change Request Mgmt."], ["TRC.1","Traceability Matrix","final","v1.0"],
     ]},
   };
 
@@ -896,8 +1042,8 @@
   // Capability level ↔ document status correlation (Automotive SPICE v4.1)
   const LEVEL_META = {
     1:{ label:"Level 1 — Performed", status:"draft" },
-    2:{ label:"Level 2 — Managed", status:"inwork" },
-    3:{ label:"Level 3 — Established", status:"review" },
+    2:{ label:"Level 2 — Managed", status:"review" },
+    3:{ label:"Level 3 — Established", status:"final" },
     4:{ label:"Level 4 — Predictable", status:"final" },
     5:{ label:"Level 5 — Innovating", status:"final" },
   };
@@ -910,7 +1056,7 @@
     const verTag = effVer ? `<span class="wp-ver">${effVer}</span>` : "";
     const tags = (statusDot || verTag) ? `<span class="wp-tags">${verTag}${statusDot}</span>` : "";
     const safeTitle = String(title).replace(/"/g, "&quot;");
-    return `<a class="wp-box ${cls||''}" href="javascript:void(0)" data-code="${code}" data-title="${safeTitle}" data-status="${effStatus||''}"
+    return `<a class="wp-box ${cls||''}" href="javascript:void(0)" data-code="${code}" data-title="${safeTitle}" data-status="${effStatus||''}" data-ver="${effVer||''}"
               title="Open ${code} — ${title} — view document template (${effStatus ? STATUS_LABEL[effStatus] : 'no status set'})">
               ${tags}<span class="code">${code}</span>${title}
             </a>`;
@@ -937,7 +1083,7 @@
     const connectorDown = `<div class="vc-connector"><span class="glyph">↓</span>splits into Mechanical, Electrical, Software &amp; Cybersecurity</div>`;
     const lanes = `<div class="vc-lanes">${laneBlock("mec",VC.lanes.mec)}${laneBlock("ele",VC.lanes.ele)}${laneBlock("swe",VC.lanes.swe)}${laneBlock("cyb",VC.lanes.cyb)}</div>`;
     const connectorUp = `<div class="vc-connector"><span class="glyph">↑</span>re-integrates at System Integration &amp; Test</div>`;
-    const supRow = `<div class="vc-group"><div class="vc-group-title">Supporting Process Group (SUP)</div><div class="vc-sup">${VC.sup.items.map(([c,t])=>wpBox(c,t,VC.sup.cls)).join("")}</div></div>`;
+    const supRow = `<div class="vc-group"><div class="vc-group-title">Supporting Process Group (SUP)</div><div class="vc-sup">${VC.sup.items.map(([c,t,s,v])=>wpBox(c,t,VC.sup.cls,s,v)).join("")}</div></div>`;
 
     el.innerHTML = `
       <div class="vc-col-left">${left}</div>
@@ -1042,6 +1188,10 @@
     "Release Criteria & Approval":"State the criteria that must be met, and who approves, before release.",
     "Release Notes":"Summarize the key characteristics, known issues and support details of the release.",
     "Delivery Confirmation":"Record confirmation that the release package was delivered to the intended customer.",
+    "Document Inventory & Order":"List every controlled document in the project in sequence (1 to n), in the order it is produced across the V-Cycle.",
+    "Dependency Mapping":"For each document, list the document(s) it is derived from (upstream) and the document(s) that depend on it (downstream), with arrows shown in the traceability diagram.",
+    "Coverage Analysis":"Confirm that every requirement, design element and verification measure is covered by at least one upstream and one downstream link.",
+    "Gaps & Open Items":"List any document, requirement or link that is missing, orphaned, or not yet traceable, together with the owner and target closure date.",
   };
 
   const REQS  = ["Functional Requirements","Non-Functional Requirements","Interface Requirements","Constraints & Assumptions","Traceability to Source Requirements"];
@@ -1099,11 +1249,12 @@
     "SUP.8": { title:"Configuration Management Plan", process:"SUP.8 — Configuration Management", purpose:"To establish and maintain the integrity of all work products through identification, control, status accounting and release of configuration items.", sections:["Configuration Items","Baseline Strategy","Branching / Versioning Scheme","Status Accounting"] },
     "SUP.9": { title:"Problem Resolution Record", process:"SUP.9 — Problem Resolution Management", purpose:"To ensure problems identified in work products or processes are recorded, analyzed and resolved in a controlled and timely manner.", sections:["Problem Categories","Severity & Priority Scheme","Resolution Workflow","Root Cause Analysis"] },
     "SUP.10": { title:"Change Request Record", process:"SUP.10 — Change Request Management", purpose:"To ensure changes to work products are recorded, evaluated for impact, and controlled through approval prior to implementation.", sections:["Change Categories","Impact Analysis","CCB Approval","Implementation Tracking"] },
+    "TRC.1": { title:"Traceability Matrix", process:"SUP.7 / SUP.8 — Documentation & Configuration Management", purpose:"To provide a single, bidirectional map of every controlled document in the project — showing, for each work product, what it was derived from and what depends on it — so coverage and consistency can be demonstrated end to end.", sections:["Document Inventory & Order","Dependency Mapping","Coverage Analysis","Gaps & Open Items"], upstream:["SYS.1","SYS.2","SYS.3","MEC.1","ELE.1","SWE.1","CYB.1","SYS.4","SYS.5"] },
   };
 
   function docControlRow(k, v){ return `<tr><td class="k">${k}</td><td>${v}</td></tr>`; }
 
-  function buildDocBody(code, boxTitle, status){
+  function buildDocBody(code, boxTitle, status, ver){
     const doc = WP_DOCS[code] || {
       title: boxTitle || code, process: `${code}`,
       purpose: "This work product satisfies the outcomes of its associated Automotive SPICE® process and shall be tailored to the project's specific needs.",
@@ -1121,6 +1272,44 @@
       refs.splice(1, 0, `Consistent and bidirectionally traceable to: ${names}`);
     }
 
+    // Downstream = every other document in WP_DOCS whose "upstream" list references this code
+    const downstream = Object.keys(WP_DOCS).filter(k => k !== code && (WP_DOCS[k].upstream || []).includes(code));
+
+    function traceLink(c){
+      const t = WP_DOCS[c] ? WP_DOCS[c].title : c;
+      const safe = String(t).replace(/"/g, "&quot;");
+      return `<a href="javascript:void(0)" class="doc-trace-link" onclick="openDocModal('${c}', '${safe.replace(/'/g,"&#39;")}', null)">${c} — ${t}</a>`;
+    }
+    const upstreamHtml = (doc.upstream && doc.upstream.length)
+      ? `<ul class="doc-refs">${doc.upstream.map(c => `<li>${traceLink(c)}</li>`).join("")}</ul>`
+      : `<p class="placeholder">No upstream document recorded — this is a top-level source document.</p>`;
+    const downstreamHtml = downstream.length
+      ? `<ul class="doc-refs">${downstream.map(c => `<li>${traceLink(c)}</li>`).join("")}</ul>`
+      : `<p class="placeholder">No downstream document recorded yet in this template — add a link once a consuming document is created.</p>`;
+
+    function buildVersionHistory(){
+      // Each prior version is shown one row below the previous, oldest first, so the
+      // reader can read the document's history top to bottom in the order it happened.
+      const rows = [
+        { v:"0.1", date:"—", author:"—", desc:"Initial draft created for Project Name." },
+      ];
+      const cur = ver || null; // e.g. "v2.1" for a Final work product currently on the V-Cycle
+      if(cur && cur !== "0.1"){
+        rows.push({ v:"0.5", date:"—", author:"—", desc:"Incorporated first round of internal review comments." });
+        rows.push({ v:"1.0", date:"—", author:"—", desc:"First approved baseline." });
+        const curNum = cur.replace(/^v/i, "");
+        if(curNum !== "1.0"){
+          rows.push({ v:curNum, date:"—", author:"—", desc:"Updated following a downstream change request; see Section 5, Traceability." });
+        }
+      } else if(status === "review"){
+        rows.push({ v:"0.9", date:"—", author:"—", desc:"Submitted for review; awaiting reviewer sign-off." });
+      } else if(status === "inwork"){
+        rows.push({ v:"0.3", date:"—", author:"—", desc:"In progress — content being actively developed." });
+      }
+      return rows;
+    }
+    const versionRows = buildVersionHistory();
+
     const sectionsHtml = doc.sections.map((name, i) => `
       <div class="doc-subsection">
         <h4>4.${i+1} ${name}</h4>
@@ -1129,7 +1318,7 @@
 
     return `
       <div class="doc-titleblock">
-        <div class="doc-kicker">Controlled Document</div>
+        <div class="doc-kicker">Project Name</div>
         <h2>${doc.title}</h2>
         <div class="doc-process-ref">Automotive SPICE® Process Reference: ${doc.process}</div>
       </div>
@@ -1171,7 +1360,19 @@
 
       <div class="doc-section">
         <h3>5. Traceability</h3>
-        <p>Every item in this document shall carry bidirectional traceability to its source (see References) and to its downstream verification or design element, so that coverage and consistency can be demonstrated at any Automotive SPICE® capability level.</p>
+        <p>Every item in this document shall carry bidirectional traceability to its source and to its downstream verification or design element, so that coverage and consistency can be demonstrated at any Automotive SPICE® capability level. This document connects to the following documents:</p>
+        <div class="doc-subsection">
+          <h4>5.1 Upstream — this document is derived from</h4>
+          ${upstreamHtml}
+        </div>
+        <div class="doc-subsection">
+          <h4>5.2 Downstream — documents derived from this one</h4>
+          ${downstreamHtml}
+        </div>
+        <div class="doc-subsection">
+          <h4>5.3 Traceability Matrix</h4>
+          <p class="placeholder">See the project-wide <a href="javascript:void(0)" class="doc-trace-link" onclick="openDocModal('TRC.1','Traceability Matrix',null)">TRC.1 — Traceability Matrix</a> for the full document order and dependency diagram (see also the "Traceability" section of this site).</p>
+        </div>
       </div>
 
       <div class="doc-section">
@@ -1187,27 +1388,34 @@
       </div>
 
       <div class="doc-section">
-        <h3>7. Revision History</h3>
+        <h3>7. Version History</h3>
+        <p class="placeholder">Each version is listed below the previous one, oldest first, so the full change history can be read top to bottom.</p>
         <table class="doc-sign-table">
           <thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Description of Change</th></tr></thead>
           <tbody>
-            <tr><td>0.1</td><td>&nbsp;</td><td>&nbsp;</td><td>Initial draft created for Project Name</td></tr>
+            ${versionRows.map(r => `<tr><td>${r.v}</td><td>${r.date}</td><td>${r.author}</td><td>${r.desc}</td></tr>`).join("")}
           </tbody>
         </table>
       </div>
 
-      <p class="doc-footer-note">Generated by OneRoofTraceability as a generic starting template aligned with Automotive SPICE® v4.1 (VDA QMC). Tailor all sections to the project's actual scope, standards and contractual requirements before use.</p>
+      <p class="doc-footer-note">Generated by OneTraceability as a generic starting template aligned with Automotive SPICE® v4.1 (VDA QMC). Tailor all sections to the project's actual scope, standards and contractual requirements before use.</p>
     `;
   }
 
-  function openDocModal(code, boxTitle, status){
+  let currentDocCode = null;
+
+  function openDocModal(code, boxTitle, status, ver){
     const overlay = document.getElementById("docModalOverlay");
     const body = document.getElementById("docModalBody");
     const barTitle = document.getElementById("docModalBarTitle");
     if(!overlay || !body) return;
     const doc = WP_DOCS[code];
+    currentDocCode = code;
     barTitle.textContent = `${code} — ${doc ? doc.title : (boxTitle || "Document Template")}`;
-    body.innerHTML = buildDocBody(code, boxTitle, status);
+    // The page <title> becomes the browser's print/PDF header — show the document code and
+    // Project Name here instead of the site name while a document is open.
+    document.title = `${code} — Project Name`;
+    body.innerHTML = buildDocBody(code, boxTitle, status, ver);
     overlay.classList.add("open");
     document.body.style.overflow = "hidden";
   }
@@ -1217,6 +1425,8 @@
     if(!overlay) return;
     overlay.classList.remove("open");
     document.body.style.overflow = "";
+    document.title = "Project Name";
+    currentDocCode = null;
   }
 
   const docOverlayEl = document.getElementById("docModalOverlay");
@@ -1227,6 +1437,39 @@
   if(docCloseBtn) docCloseBtn.addEventListener("click", closeDocModal);
   const docPrintBtn = document.getElementById("docModalPrintBtn");
   if(docPrintBtn) docPrintBtn.addEventListener("click", () => window.print());
+
+  // Export the currently open document as a Word (.doc) file. Word opens HTML files saved
+  // with a .doc extension and the Word XML namespaces directly — no server or library needed.
+  function downloadCurrentDocAsWord(){
+    const body = document.getElementById("docModalBody");
+    const barTitle = document.getElementById("docModalBarTitle");
+    if(!body) return;
+    const title = barTitle ? barTitle.textContent : "Document";
+    const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+      <head><meta charset="utf-8"><title>${title}</title>
+      <style>
+        body{ font-family:Calibri, Arial, sans-serif; color:#1C2733; }
+        h2{ color:#0B2545; } h3{ color:#0B2545; border-bottom:1px solid #E2EBF5; padding-bottom:4px; }
+        h4{ color:#13315C; }
+        table{ border-collapse:collapse; width:100%; margin-bottom:14px; }
+        td, th{ border:1px solid #E2EBF5; padding:6px 8px; font-size:11pt; text-align:left; }
+        th{ background:#F4F8FC; }
+        .doc-refs{ padding-left:20px; }
+        a{ color:#1B4F91; }
+      </style></head>
+      <body>${body.innerHTML}</body></html>`;
+    const blob = new Blob(['\ufeff', html], { type: "application/msword" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${(currentDocCode || "Document")}-ProjectName.doc`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+  const docWordBtn = document.getElementById("docModalWordBtn");
+  if(docWordBtn) docWordBtn.addEventListener("click", downloadCurrentDocAsWord);
   document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeDocModal(); });
 
   const vcycleMainEl = document.getElementById("vcycle-main");
@@ -1235,7 +1478,7 @@
       const box = e.target.closest(".wp-box");
       if(!box) return;
       e.preventDefault();
-      openDocModal(box.dataset.code, box.dataset.title, box.dataset.status || null);
+      openDocModal(box.dataset.code, box.dataset.title, box.dataset.status || null, box.dataset.ver || null);
     });
   }
 
@@ -1284,6 +1527,44 @@
     setLegendActive(null);
     updateLevelBanner();
   }
+
+  // ---------------- Send Status to Manager ----------------
+  function collectAllStatusRows(){
+    const rows = [];
+    const pushGroup = (group) => group.items.forEach(([c,t,s]) => rows.push([c, t, vcOverrideStatus || s || "not set"]));
+    pushGroup(VC.acq); pushGroup(VC.spl); pushGroup(VC.man); pushGroup(VC.reu); pushGroup(VC.pim);
+    VC.sys.items.forEach(([c,t,s]) => rows.push([c, t, vcOverrideStatus || s || "not set"]));
+    Object.values(VC.lanes).forEach(lane => lane.items.forEach(([c,t,s]) => rows.push([c, t, vcOverrideStatus || s || "not set"])));
+    pushGroup(VC.sup);
+    return rows;
+  }
+
+  function sendStatusToManager(){
+    const rows = collectAllStatusRows();
+    const baseUrl = window.location.href.split("#")[0];
+    const vcycleUrl = `${baseUrl}#vcycle`;
+    const traceUrl = `${baseUrl}#traceability`;
+    const lines = rows.map(([c,t,s]) => `  ${c} — ${t}: ${STATUS_LABEL[s] || s}`);
+    const subject = "Project Status Update — Project Name";
+    const body =
+`Hi,
+
+Here is the current status of every controlled document for Project Name.
+
+V-Cycle diagram (clickable link): ${vcycleUrl}
+Traceability diagram (clickable link): ${traceUrl}
+
+Document status:
+${lines.join("\n")}
+
+Note: this email links to the live V-Cycle and Traceability diagrams above; most email clients cannot embed an interactive picture directly, so please open the links to view them.
+
+Regards`;
+    const mailto = `mailto:jobcarmen@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+  }
+  const sendStatusBtnEl = document.getElementById("sendStatusBtn");
+  if(sendStatusBtnEl) sendStatusBtnEl.addEventListener("click", sendStatusToManager);
 
   const vcycleShowActualBtn = document.getElementById("vcycleShowActualBtn");
   if(vcycleShowActualBtn){
